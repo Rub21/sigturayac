@@ -1,0 +1,230 @@
+/* ------------------------------------------
+  Reset ♥
+  http://meyerweb.com/eric/tools/css/reset/
+  v2.0 | 20110126
+  License: none (public domain)
+---------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    font:inherit;
+    vertical-align:baseline;
+}
+body { line-height:1; }
+ol, ul { list-style:none;  }
+blockquote, q { quotes:none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: collapse; border-spacing:0; }
+/* remember to define focus styles. Hee Haw */
+:focus { outline:0; }
+
+*::-webkit-scrollbar {
+    background:#fff;
+    width:15px;
+}
+*::-webkit-scrollbar-thumb {
+    background:#ccc;
+    border-radius:15px;
+    border:5px #fff solid;
+}
+
+/* ------------------------------------------
+  Typography
+---------------------------------------------*/
+
+body {
+    background:#fff;
+    color:#404040;
+    font:14px/24px Helvetica, arial, freesans, clean, sans-serif;
+    -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5,h6 {
+    margin:0;
+    font-weight:bold;
+}
+h1 {
+    font-size:22px;
+    line-height:27px;
+}
+h2 {
+    font-size:19px;
+    line-height:27px;
+}
+h3 {
+    font-size:17px;
+    line-height:27px;
+}
+p, ul {
+    margin:0 0 15px;
+}
+a {
+    color:#404040;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+#header h1 {
+    font-size:15px;
+    line-height:40px;
+}
+#header h1 a {
+    color:#fff;
+}
+
+.brand    { color:#BA003F; }
+.subtitle {
+    color:#9699A2;
+    margin-left:10px;
+}
+
+/*-----------------------------------
+  Style
+-------------------------------------*/
+#masthead {
+    background:#2B2D33;
+    width:100%;
+    position:relative;
+    z-index:1000;
+    -webkit-box-shadow:0 2px 6px rgba(0,0,0,0.25);
+    box-shadow:0 2px 6px rgba(0,0,0,0.25);
+}
+#map,#map-r, #map-h{  /*maps for recurso , hotel*/  
+    background:#f3f3f3;
+    width:560px;
+    border:1px solid #808080;
+    height:480px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+
+}
+.marker {
+    width:80px;
+    height:60px;
+    margin-left:-40px;
+    margin-top:-50px;
+    position:absolute;
+    z-index:1000;
+    pointer-events:all;
+}
+
+
+.total-container/*sig_popover*/{
+    /*background: #000;*/
+    width: 623px;
+    height: auto;  
+    display: none;
+    position: absolute;    
+    top:50px;  
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0; 
+    z-index: 100;
+
+}
+
+/*-----------------------------------
+  Lil Helpers
+-------------------------------------*/
+/*Markup free clearing
+Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack*/
+.clearfix:after {
+    content:'';
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+}
+* html .clearfix { height:1%; }
+*:first-child + html .clearfix { min-height:1%; }
+
+
+#backdrop {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #000;
+    opacity: 0.8;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    z-index: 99;
+}
+
+
+/*for boostrap*/
+.container .row .well {
+    padding: 1px;
+}
+.container .row input[type="text"], .container .row select{
+    height: 30px;
+    line-height: 30px;
+    width:380px;
+
+}
+.container  .row textarea{
+    width:380px;
+}
+
+.container  .row .span4{
+    text-align: left;
+}
+
+.container .row accordion-inner .formap{
+    padding: 0px;
+}
+
+
+.container .file_upload  input[type="text"]{
+    margin-top: 7px;
+    height: 30px;
+    line-height: 30px;
+    width:auto;
+}
+
+.container .file_upload  input[type="file"] {
+    height: 30px;
+    line-height: 30px;
+}
+
+.container .file_upload .well {
+    margin-bottom:2px;
+}
+
+.button_map{
+    text-align: left;
+    padding-left: 50px;
+    padding-bottom: 10px;
+}
+
+.conmap , .conmap_hotel, .conmap_sition{
+    display: block;
+    background: #F5F5F5;
+    height: auto;
+    width:623px; 
+    margin-bottom: 10px;
+    margin-top: -21px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+.conmap  .accordion-heading .accordion-toggle,.conmap_hotel , .conmap_sition{
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
