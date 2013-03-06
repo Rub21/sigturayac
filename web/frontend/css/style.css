@@ -89,7 +89,7 @@ a {
 -------------------------------------*/
 /*
 #menu_type_incident{
-  background-image: url(../images/img-header.png);
+  background-image: url(../img/img-header.png);
   height: 40px;
   left: 0;
   margin-left: auto;
@@ -157,7 +157,7 @@ loading gif
   }
 
 .loading:after {
-  background: url(../images/ajax-loader.gif) no-repeat;
+  background: url(../img/ajax-loader.gif) no-repeat;
   content: "Cargando...";
   color: #666;
   left: 50%;  
@@ -175,7 +175,7 @@ loading gif
 #map.loading:after {
   background-color: #333;
   background-color: rgba(0,0,0,0.75);
-  background-image: url(../images/ajax-loader-rev.gif);
+  background-image: url(../img/ajax-loader-rev.gif);
   color: #fff;
   padding: 20px;
   background-position: 20px 50%;
@@ -309,7 +309,7 @@ footer
   }
 
 #footer .center .separator{
-  background: url("../images/ftr-separator.png") no-repeat ;
+  background: url("../img/ftr-separator.png") no-repeat ;
   background-position:center;
   display: block;
   font-size: 0;
