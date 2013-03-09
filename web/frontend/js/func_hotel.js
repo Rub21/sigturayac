@@ -5,14 +5,15 @@ function call_detail_hotel(id){
     var link3='otros';
     var pro= buscarproducto(id);
     //$('#detail').html();
-    var o='<div class="container">'+
+    var o='<div class="container" id="popover_hotel">'+
     '<div class="well">'+
+
     '<div class="navbar ">'+
+        '<dic class="img_popover"> <img src="http://a.tiles.mapbox.com/v3/marker/pin-m-'+pro.properties['marker-symbol']+'+000.png" alt=""></dic>'+
         '<div class="navbar-inner">'+
             '<div class="container">'+
-                '<a class="brand" href="#">'+
-                    '<i class="icon-leaf">'+
-                        '</i>'+ pro.nombre+
+                '<a class="brand"  href="#">'+                                        
+                         pro.nombre+                        
                     '</a>'+
                 '<ul class="nav pull-right" >'+
                     '<li>'+
@@ -89,23 +90,23 @@ function add_details(id_parent,p){
     var table='<table class="table table-striped table-bordered table-condensed">'+
     '<tbody>'+
          '<tr>'+
-        '<td>Dirceción</td>'+
+        '<td> <i class="icon-hand-right"></i> Dirceción</td>'+
         '<td>'+p.direccion+'</td>'+
      
       '</tr>'+   
 
      '<tr>'+
-        '<td>Telefono</td>'+
+        '<td> <i class="icon-hand-right"></i> Telefono</td>'+
         '<td>'+p.telefono+'</td>'+
 
       '</tr>'+  
            '<tr>'+
-        '<td>Sitio Web</td>'+
+        '<td> <i class="icon-hand-right"></i> Sitio Web</td>'+
         '<td>'+p.sitio+'</td>'+
 
       '</tr>'+   
            '<tr>'+
-        '<td>Horario de Atenciónn</td>'+
+        '<td> <i class="icon-hand-right"></i> Horario de Atenciónn</td>'+
         '<td>'+p.hora_aten+'</td>'+    
       '</tr>'+
     '</tbody>'+ 
