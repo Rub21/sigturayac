@@ -1,2 +1,2 @@
 var features_data=[];
- var dir='imagenesDB/';
+var dir='imagenesDB/';

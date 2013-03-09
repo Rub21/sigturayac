@@ -66,3 +66,21 @@ block  for superposition
 
 }
 
+
+#id_promocion .popover{
+     position:relative;
+    width: auto !important;
+ 
+    
+    /*top: 71px !important;
+    left: 379px !important;*/
+    text-align: center;
+}
+
+
+#id_servicio .popover {
+     position:relative;
+    width: auto !important;
+    /*top: 71px !important;
+    left: 379px !important;*/
+}

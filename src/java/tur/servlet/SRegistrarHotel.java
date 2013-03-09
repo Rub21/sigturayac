@@ -142,7 +142,7 @@ public class SRegistrarHotel extends HttpServlet {
             for (int i = 1; i <= num_promociones; i++) {
                 BPromocion bPromocion = new BPromocion();
                 bPromocion.setTipo(mrequest.getParameter("type-promotion" + i));
-                bPromocion.setDescripcion(mrequest.getParameter("type-promotion" + i));
+                bPromocion.setDescripcion(mrequest.getParameter("description-promotion" + i));
                 bPromocion.setIdproducto(idproducto);
                 listprom.add(bPromocion);
             }

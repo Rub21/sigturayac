@@ -143,7 +143,7 @@ Map
 
 #map {
   background-color: #2D2A2A;
-  height: 680px;
+  height: 640px;
   position:absolute; 
   top:80px; 
   width:100%; 
@@ -440,28 +440,7 @@ CLOSE
   z-index: 20;
   }
 
-/*#detail{
 
-  background: url("../../font.png") no-repeat;
-}*/
-
-/*search*/
-/*#search{
-  position: absolute;
-  top: 90px;
-  right: 10px;
-  z-index: 7;
-  background: #fff;
-
-  border-radius: 5px;
-  -moz-box-shadow:    0 0 3px #000;
-  -webkit-box-shadow: 0 0 3px #000;
-  box-shadow:         0 0 3px #000;
-}
-input {
-  width: 200px;
-  height: 25px;
-}*/
 
 input.fetching {
   background: lightgrey;
@@ -647,7 +626,6 @@ Mapbox
 */
 .marker-popup{
   width:260px;
-  opacity:0.9;
 box-shadow: 0 30px 20px -3px #666;
 }
 
@@ -723,3 +701,5 @@ a.button_toltip:hover {
   color:#005580;
   text-decoration: none;
   }
+
+

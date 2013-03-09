@@ -91,7 +91,7 @@
         <div class="accordion" id="accordion-h">
             <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-h">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-h" >
                         Mostrar Mapa
                     </a>
                 </div>
