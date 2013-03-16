@@ -1,15 +1,15 @@
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Incidentes Ayacucho</title>
+        <title>TURAYACUCHO</title>
         <link type='text/css' href='frontend/css/mapbox.css' rel='stylesheet' />
-        <link rel='stylesheet' href='frontend/css/reset.css' type='text/css'  />
-       
-        
+        <!--<link rel='stylesheet' href='frontend/css/reset.css' type='text/css'  />-->
+
+
         <link  type='text/css' href='frontend/css/style.css' rel='stylesheet' />
         <link  type='text/css' href='frontend/css/style_popover.css' rel='stylesheet' />
-      
- <link href="frontend/css/bootstrap.css" rel="stylesheet" media="screen">
+
+        <link href="frontend/css/bootstrap.css" rel="stylesheet" media="screen">
         <!--styles Search
          <link rel="stylesheet" href="frontend/css/better-autocomplete.css" />-->
 
@@ -35,14 +35,33 @@
                                 <ul class="nav">
                                     <li class="active"><a href="#"><i class="icon-home icon-white"></i>Inicio</a></li>
                                     <li class="dropdown">
-
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-ok icon-white"></i>Donde ir<b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Action</a></li>
-                                            <li><a href="#">Another action</a></li>
+                                        <ul class="dropdown-menu select_recurso">
+                                            <li><a href="#">Sitios Arqueológicos</a></li>
+                                            <li><a href="#">Arquitectura Colonial</a></li>
+                                            <li><a href="#">Sitios Historicos</a></li>
+                                            <li><a href="#">Cultura Viva</a></li>
+                                            <li><a href="#">Paisaje Natural</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Todos</a></li>
+
                                         </ul>
                                     </li>
-                                    <li><a href="#"><i class="icon-dormir"></i>Donde Dormir</a></li>
+                                    <li class="dropdown">
+                                        <a class='select_hotel' href="#"  class="dropdown-toggle" data-toggle="dropdown"><i class="icon-dormir"></i>Donde Dormir <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Sin Categoria</a></li>
+                                            <li><a href="#">1 Estrella</a></li>
+                                            <li><a href="#">2 Estrellas</a></li>
+                                            <li><a href="#">3 Estrellas</a></li>
+                                            <li><a href="#">4 Estrelas</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Todos</a></li>
+
+                                        </ul>
+
+
+                                    </li>
                                     <li><a href="#"><i class="icon-food icon-white"></i>Donde Comer</a></li> 
                                     <li><a href="#"><i class="icon-plane icon-white"></i>Como Viajar</a></li> 
                                     <li><a href="#">Donde Comparar</a></li>
@@ -52,8 +71,8 @@
 
                                 <form class="navbar-search pull-right">                                    
                                     <!-- Search-->
-                                    
-                              
+
+
 
                                     <input type="text" id="search" name="search" class="search-query span3 " placeholder="Buscar"/>
                                     <!-- close-->
@@ -77,9 +96,9 @@
 
 
 
-<!-- Button to trigger modal -->
-<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
- 
+            <!-- Button to trigger modal -->
+            <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
 
 
 
@@ -94,20 +113,20 @@
 
 
 
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Save changes</button>
-  </div>
-</div>
+        <!-- Modal -->
+        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
 
 
 
@@ -142,6 +161,7 @@
         <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
         <script src="frontend/js/jquery.min.js"></script>
         <script src="frontend/js/underscore-min.js"></script>
+
         <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
         <script src="frontend/js/global.js"></script>
         <script src="frontend/js/app_imagenes.js"></script>
@@ -167,5 +187,6 @@
         <!--js grid images-->
         <script src="frontend/js/bootstrap.js"></script>
         <!-- end grid images--> 
+
     </body>
 </html>

@@ -1,7 +1,7 @@
 //features_data=global data
 //dir= global data
 function mm_recurso(callback) {
-    if (typeof reqwest === 'undefined'){
+    if (typeof reqwest === 'undefined') {
         throw 'CSV: reqwest required for mm_recurso';
     }
     var url = 'http://localhost:8080/sigturayac/SListarRecurso?callback=callback';
@@ -11,34 +11,41 @@ function mm_recurso(callback) {
         jsonpCallback: 'callback',
         success: response,
         error: response
-    }); 
-   
+    });
+
+
+
+
+
     function response(x) {
         //var features = [],
         latfield = '',
-        lonfield = '';
+                lonfield = '';
         //console.log(x);
+
+
+
         for (var i = 0; i < x.length; i++) {
-            var a =x[i].categoria.replace(/\s/g,"");
+            var type_icon = x[i].tipo.toLowerCase().replace(/\s/g, "");/*.replace('ó','o');;*/
             //some fixing
-            _.each(x[i].imagenes, function (value, key) {
-                x[i].imagenes[key].url= dir+x[i].imagenes[key].url;
+            _.each(x[i].imagenes, function(value, key) {
+                x[i].imagenes[key].url = dir + x[i].imagenes[key].url;
             });
             //Properties
-            x[i]['properties']={};
-            if(a=='ManifestaciónCultural'){
-                x[i].properties['marker-size'] =  'small';
-                x[i].properties['marker-symbol'] ='monument';
-                x[i].properties['marker-color']= '#000';
-            }else if(a=='SitioNatural'){
-                x[i].properties['marker-size'] =  'small';
-                x[i].properties['marker-symbol'] ='park';
-                x[i].properties['marker-color']= '#000';
-            }                                    
-            //features.push(x[i]);                         
+            x[i]['properties'] = {};
+            x[i].properties['marker-size'] = 'large';
+            x[i].properties['marker-symbol'] = type_icon;
+            x[i].properties['marker-color'] = '#000000';
+
             features_data.push(x[i]);//global variable
-        } 
-        
-        return callback;
+
+        }
+
+
+
+
+        console.log('primero pasa por aqui' + features_data);
+        //return callback;
+        return callback(features_data);
     }
 }

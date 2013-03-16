@@ -228,3 +228,12 @@ Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack*/
     margin: 0px;
     text-align: center;
 }
+
+
+
+/*input:invalid {
+    border: 1px solid red;
+}*/
+.error{
+    color: #FF0000;
+}

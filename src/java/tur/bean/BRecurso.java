@@ -13,8 +13,10 @@ public class BRecurso  extends BProducto{
     private String categoria;
     private String tipo;
     private String descripcion;
+    private String corredor;
     private BGeometry geometry;
     private ArrayList<BImagen> imagenes; 
+    private BDetalle detalle;
 
     public String getIdrecurso() {
         return idrecurso;
@@ -48,12 +50,20 @@ public class BRecurso  extends BProducto{
         this.descripcion = descripcion;
     }
 
-    public BGeometry getbGeometry() {
+    public String getCorredor() {
+        return corredor;
+    }
+
+    public void setCorredor(String corredor) {
+        this.corredor = corredor;
+    }
+
+    public BGeometry getGeometry() {
         return geometry;
     }
 
-    public void setbGeometry(BGeometry bGeometry) {
-        this.geometry = bGeometry;
+    public void setGeometry(BGeometry geometry) {
+        this.geometry = geometry;
     }
 
     public ArrayList<BImagen> getImagenes() {
@@ -62,6 +72,14 @@ public class BRecurso  extends BProducto{
 
     public void setImagenes(ArrayList<BImagen> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public BDetalle getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(BDetalle detalle) {
+        this.detalle = detalle;
     }
 
     

@@ -1,6 +1,4 @@
 <%@ page pageEncoding="ISO-8859-1" %>
-
-
 <form name="form" id="form-h" method="post"  action="<%=request.getContextPath()%>/SRegistrarHotel" enctype="multipart/form-data" >
     <div class="container">
         <div class="row">                  
@@ -17,11 +15,12 @@
                         <div class="span4 left">Categoria</div>
                         <div class="span4">
                             <select name='category' id='category-h' align="left" >
-                                <option value='2 Estrellas'>1 Estrellas</option>
+                                <option value='Sin Categoria'>Sin Categoria</option>
+                                <option value='1 Estrellas'>1 Estrellas</option>
                                 <option value='2 Estrellas'>2 Estrellas</option>
                                 <option value='3 Estrella'>3 Estrella</option>
                                 <option value='4 Estrella'>4 Estrella</option>
-                                <option value='5 Estrella'>5 Estrella</option>
+                                <!--<option value='5 Estrella'>5 Estrella</option>-->
                             </select>
                         </div>
                     </div>                     

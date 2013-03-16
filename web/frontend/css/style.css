@@ -625,8 +625,18 @@ Mapbox
 ======
 */
 .marker-popup{
-  width:260px;
+width:260px;
 box-shadow: 0 30px 20px -3px #666;
+/*border: 1px solid rgba(0, 0, 0, 0.2);
+border-radius: 6px 6px 6px 6px;    */
+}
+
+.popover-geo-title{
+
+    border-bottom: 1px solid #EBEBEB;
+    border-radius: 5px 5px 0 0;
+
+   
 }
 
 
@@ -703,3 +713,23 @@ a.button_toltip:hover {
   }
 
 
+.marker-popup {
+  /*position:relative;
+  left:-50%;
+  max-width:400px;
+  background:#fff;
+  border:2px solid #ccc;
+  color:#000;*/
+ /* padding-top: 50px;*/
+ /* padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+
+  -webkit-user-select:auto;
+     -moz-user-select:auto;
+          user-select:auto;
+  -webkit-box-shadow: 2px 2px 5px -2px #ccc;
+          box-shadow: 2px 2px 5px -2px #ccc;
+  -webkit-border-radius:3px;
+          border-radius:3px;*/
+  }

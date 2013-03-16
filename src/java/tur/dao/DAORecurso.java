@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tur.bean.BDetalle;
 import tur.bean.BGeometry;
 import tur.bean.BImagen;
 import tur.bean.BRecurso;
@@ -49,10 +50,17 @@ public class DAORecurso {
                     + "'" + bRecurso.getCategoria() + "',"
                     + "'" + bRecurso.getTipo() + "',"
                     + "'" + bRecurso.getDescripcion() + "',"
-                    + bRecurso.getbGeometry().getLatitud() + ","
-                    + bRecurso.getbGeometry().getLongitud() + ");";
-
-
+                    + "'" + bRecurso.getCorredor() + "',"
+                    + bRecurso.getGeometry().getLatitud() + ","
+                    + bRecurso.getGeometry().getLongitud() + ","
+                    + "'" + bRecurso.getDetalle().getDistancia() + "',"
+                    + "'" + bRecurso.getDetalle().getCosto_ingreso() + "',"
+                    + "'" + bRecurso.getDetalle().getHora_atencion() + "',"
+                    + "'" + bRecurso.getDetalle().getTemperatura() + "',"
+                    + "'" + bRecurso.getDetalle().getComo_llegar() + "'"                    
+                    + ");";
+            
+        
             String sql_img = "";
             for (int i = 0; i < bRecurso.getImagenes().size(); i++) {
 
@@ -82,13 +90,14 @@ public class DAORecurso {
 
         try {
 
-            String sql = "SELECT idproducto, nombre, clase, estado,idrecurso, categoria, tipo, descripcion,lat, lon FROM select_recurso;";
+            String sql = "SELECT idproducto, nombre, clase, estado,idrecurso, categoria, tipo, descripcion,corredor,lat, lon ,distancia, costo_ingreso, hora_atencion, temperatura, como_llegar FROM select_recurso;";
             //System.out.println("--:" + sql);
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 BRecurso bRecurso = new BRecurso();
                 BGeometry bGeometry = new BGeometry();
+                BDetalle bDetalle=new BDetalle();
 
                 //Producto                
                 bRecurso.setIdproducto(rs.getString("idproducto"));
@@ -101,17 +110,26 @@ public class DAORecurso {
                 bRecurso.setCategoria(rs.getString("categoria"));
                 bRecurso.setTipo(rs.getString("tipo"));
                 bRecurso.setDescripcion(rs.getString("descripcion"));
+                bRecurso.setCorredor(rs.getString("corredor"));
 
                 //Geometry
                 bGeometry.setLatitud(rs.getDouble("lat"));
                 bGeometry.setLongitud(rs.getDouble("lon"));
                 bGeometry.setIdproducto(rs.getString("idproducto"));  
                 bGeometry.setCoordinates();
-                bRecurso.setbGeometry(bGeometry);
+                bRecurso.setGeometry(bGeometry);
+                
+                //Detalle
+                bDetalle.setDistancia(rs.getString("distancia"));
+                bDetalle.setCosto_ingreso(rs.getString("costo_ingreso"));
+                bDetalle.setHora_atencion(rs.getString("hora_atencion"));
+                bDetalle.setTemperatura(rs.getString("temperatura"));
+                bDetalle.setComo_llegar(rs.getString("como_llegar"));
+                bDetalle.setIdrecurso(rs.getString("idrecurso"));
+                bRecurso.setDetalle(bDetalle);
                 
                 //Imagen
-                bRecurso.setImagenes(listarimagen(bRecurso.getIdproducto()));
-          
+                bRecurso.setImagenes(listarimagen(bRecurso.getIdproducto()));          
                 list.add(bRecurso);
             }
 

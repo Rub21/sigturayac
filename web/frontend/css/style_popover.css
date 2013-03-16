@@ -74,7 +74,7 @@ block  for superposition
   width:auto;
 }
 
-#popover_hotel .brand{
+#popover_hotel .brand, #popover_recurso .brand{
   margin-left: 20px;
 }
 
@@ -97,4 +97,22 @@ block  for superposition
     left: 379px !important;*/
 }
 
+
+#id_categoria{
+
+  position:absolute;
+  top:70px;
+  left:50px;
+  z-index: 99999999;
+  width:auto;
+}
+
+
+/****************cutom carrucel*/
+.carousel-caption h3{
+  text-align: left;
+}
+.carousel-caption h3{
+  color:#fff;
+}
 

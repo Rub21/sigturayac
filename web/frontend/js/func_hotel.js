@@ -7,9 +7,9 @@ function call_detail_hotel(id){
     //$('#detail').html();
     var o='<div class="container" id="popover_hotel">'+
     '<div class="well">'+
-
+    '<div id="id_categoria">Categoria: </div>'+
     '<div class="navbar ">'+
-        '<dic class="img_popover"> <img src="http://a.tiles.mapbox.com/v3/marker/pin-m-'+pro.properties['marker-symbol']+'+000.png" alt=""></dic>'+
+        '<div class="img_popover"> <img src="http://dl.dropbox.com/u/43116811/icon-tur/'+pro.properties['marker-symbol']+'-l.png" alt=""></div>'+
         '<div class="navbar-inner">'+
             '<div class="container">'+
                 '<a class="brand"  href="#">'+                                        
@@ -71,6 +71,7 @@ function call_detail_hotel(id){
     //add_button_popovers('button_popover','id_temporada','cuando visitar');
     carrucel_images(pro.imagenes, 'carrucel',575);
     add_details('id_detalles',pro);
+    add_categoria('id_categoria',pro);
     add_habitacion('id_habitacion',pro.bHabitacion);
     add_promocion('id_promocion','id_popover_prom',pro.bPromocion);
     add_servicio('id_servicio','id_popover_serv',pro.bServiciosAdicional);
@@ -83,6 +84,26 @@ function call_detail_hotel(id){
     $('#close').show(200);
 }
 
+function add_categoria(id_parent,p){
+/*console.log(p.categoria);
+console.log(p.categoria.substring(0,1));*/
+var li='';
+
+    if(p.categoria.toLowerCase().replace(/\s/g, "")==='sincategoria')
+    {
+
+        li='Sin Categoria';
+    }else{
+
+
+        var starts=  parseInt(p.categoria.substring(0,1));
+        for (var i =0 ; i<starts; i++) {
+            li +='<i class="icon-star"></i>';        
+        }
+
+    }
+    $('#'+id_parent).append(li);
+};
 
 
 function add_details(id_parent,p){
@@ -112,6 +133,7 @@ function add_details(id_parent,p){
     '</tbody>'+ 
     '</table>';
     $('#'+id_parent).append(table);
+
 
 /*direccion: "ppppppppppppppppppppppppp ",
 telefono: "ppppppppppppppppppp ",

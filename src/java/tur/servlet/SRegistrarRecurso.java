@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javazoom.upload.*;
 import org.apache.commons.fileupload.FileUploadException;
+import tur.bean.BDetalle;
 import tur.bean.BGeometry;
 import tur.bean.BRecurso;
 import tur.bean.BImagen;
@@ -55,6 +56,7 @@ public class SRegistrarRecurso extends HttpServlet {
         BRecurso bRecurso = new BRecurso();
         BImagen bImagen;// = new BImagen();
         BGeometry bGeometry = new BGeometry();
+        BDetalle bDetalle= new BDetalle();
 
         UploadBean upBean;
         //clases for upload images
@@ -89,6 +91,7 @@ public class SRegistrarRecurso extends HttpServlet {
             bRecurso.setCategoria(mrequest.getParameter("category"));
             bRecurso.setTipo(mrequest.getParameter("type"));
             bRecurso.setDescripcion(mrequest.getParameter("description"));
+            bRecurso.setCorredor(mrequest.getParameter("corredor"));
            
             
             // Geometry            
@@ -96,10 +99,18 @@ public class SRegistrarRecurso extends HttpServlet {
             bGeometry.setLatitud(Double.parseDouble(mrequest.getParameter("lat")));
             bGeometry.setLongitud(Double.parseDouble(mrequest.getParameter("lon")));
             bGeometry.setIdproducto(id);
+            
+            //Detalle
+            bDetalle.setDistancia(mrequest.getParameter("traveling_distance"));
+            bDetalle.setCosto_ingreso(mrequest.getParameter("entry_cost"));
+            bDetalle.setHora_atencion(mrequest.getParameter("opening_hours"));
+            bDetalle.setTemperatura(mrequest.getParameter("temperatura"));
+            bDetalle.setComo_llegar(mrequest.getParameter("how_get"));
+            bDetalle.setIdrecurso(idrecurso);
+            bRecurso.setDetalle(bDetalle);
 
-
+            //imagen
             String url_img = "";
-
             ArrayList<BImagen> listImagenes = new ArrayList<BImagen>();        
             
             for (int i = 1; i <= files.size(); i++) {
@@ -133,7 +144,7 @@ public class SRegistrarRecurso extends HttpServlet {
 
             //System.out.println("list.toString(); "+ list.toString());         
             System.out.println("features " + bRecurso.features());            
-            bRecurso.setbGeometry(bGeometry);
+            bRecurso.setGeometry(bGeometry);
             bRecurso.setImagenes(listImagenes);
             
             managerrecurso.registrarrecurso(bRecurso);

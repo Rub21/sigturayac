@@ -5385,7 +5385,8 @@ input[type="submit"].btn.btn-mini {
   left: 0;
   z-index: 1010;
   display: none;
-  max-width: 276px;
+  /*max-width: 276px;*/
+  max-width: auto;
   padding: 1px;
   text-align: left;
   white-space: normal;

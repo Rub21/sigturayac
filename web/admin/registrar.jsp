@@ -28,13 +28,7 @@
                             <ul class="nav">
                                 <li class="active"><a href="#">Inicio</a></li>
                                 <li class="dropdown">
-                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Recursos Turistico <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">                                                                           
-                                        <li><a href="#sition">Sitio Natural</a></li>                                    
-                                        <li><a href="#mancult">Manifestación Cultural</a></li>
-                                        <li><a href="#">Folclore</a></li>
-                                        <li><a href="#">Realizaciones Técnicas Científicas </a></li>
-                                    </ul>
+                                    <a href="#recurso">Recursos Turistico</a>
                                 </li>
 
                                 <li class="dropdown">
@@ -70,7 +64,7 @@
 
         </div>
         <div id='backdrop'></div>
-        <div class="total-container" id='sition'>
+        <div class="total-container" id='recurso'>
             <%@ include file="recurso.jspf" %>
         </div>
         <div class="total-container" id='mancult'>         
@@ -83,11 +77,13 @@
         <!--Scripts-->		
         <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
         <script src='http://code.jquery.com/jquery-1.8.2.js'></script>
+        <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
         <script src='js/underscore.min.js'></script>
         <script src='js/bootstrap.js'></script>        
         <script src='js/app_map.js' ></script>
         <script src='js/app.js' ></script>
         <script src='js/form_recurso.js' ></script>
         <script src='js/form_hotel.js' ></script>
+        <script src='js/form_validate.js' ></script>
     </body>
 </html>
