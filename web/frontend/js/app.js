@@ -166,30 +166,24 @@ $(document).on('ready', function() {
     });
 
 
-
-    $('#close_overdetail').click(function(e) {
-        e.preventDefault();
-        $('#backdrop_overdetail').fadeOut(200);
-        $('#sub_detail').hide(200);
-        $('#sub_detail').empty();
-        $('#close_overdetail').hide(200);
-    });
+    /*$('#close_overdetail').click(function(e) {
+     e.preventDefault();
+     $('#backdrop_overdetail').fadeOut(200);
+     $('#sub_detail').hide(200);
+     $('#sub_detail').empty();
+     $('#close_overdetail').hide(200);
+     });*/
 
 
     $('.select_recurso a').click(function(e) {
-
-
         var categoria = $(this).text().toLowerCase().replace(/\s/g, "");
-
         if (categoria === 'todos') {
             markerLayer.filter(function(features) {
                 if (features.clase.toLowerCase().replace(/\s/g, "") === 'recursoturístico') {
-
                     map.ease.location({
-                    lat: features.geometry.coordinates[1],
-                    lon: features.geometry.coordinates[0]
-                }).zoom(10).optimal();
-
+                        lat: features.geometry.coordinates[1],
+                        lon: features.geometry.coordinates[0]
+                    }).zoom(10).optimal();
                     return true;
                 }
 
@@ -198,59 +192,68 @@ $(document).on('ready', function() {
             markerLayer.filter(function(features) {
                 if (features.categoria.toLowerCase().replace(/\s/g, "") === categoria) {
 
-                         map.ease.location({
-                    lat: features.geometry.coordinates[1],
-                    lon: features.geometry.coordinates[0]
-                }).zoom(10).optimal();
+                    map.ease.location({
+                        lat: features.geometry.coordinates[1],
+                        lon: features.geometry.coordinates[0]
+                    }).zoom(10).optimal();
                     return true;
                 }
 
             });
 
         }
-
-
-
-
     });
 
 
-    $('.select_hotel').click(function(e) {
-
-
+    $('.select_hotel a').click(function(e) {
         var categoria = $(this).text().toLowerCase().replace(/\s/g, "");
-        if (categoria === 'dondedormir') {
-            categoria = 'hotel';
+        if (categoria === 'todos') {
+            markerLayer.filter(function(features) {
+                if (features.clase.toLowerCase().replace(/\s/g, "") === 'hotel') {
+                    map.ease.location({
+                        lat: features.geometry.coordinates[1],
+                        lon: features.geometry.coordinates[0]
+                    }).zoom(10).optimal();
+                    return true;
+                }
+            });
+        } else {
+            markerLayer.filter(function(features) {
+                if (features.categoria.toLowerCase().replace(/\s/g, "") === categoria) {
+                    map.ease.location({
+                        lat: features.geometry.coordinates[1],
+                        lon: features.geometry.coordinates[0]
+                    }).zoom(10).optimal();
+                    return true;
+                }
+
+            });
         }
+    });
 
+    $('.select_corredor a').click(function(e) {
+        var corredor = $(this).text().toLowerCase().replace(/\s/g, "");
 
-
+        //alert(corredor);
         markerLayer.filter(function(features) {
 
-            if (features.categoria.toLowerCase().replace(/\s/g, "") === categoria) {
+            if (features.clase.toLowerCase().replace(/\s/g, "") === 'recursoturístico') {
 
-                map.ease.location({
-                    lat: features.geometry.coordinates[1],
-                    lon: features.geometry.coordinates[0]
-                }).zoom(10).optimal();
-
-                return true;
-
+                console.log(features.corredor.toLowerCase().replace(/\s/g, ""));
+                if (features.corredor.toLowerCase().replace(/\s/g, "") === corredor) {
+                    map.ease.location({
+                        lat: features.geometry.coordinates[1],
+                        lon: features.geometry.coordinates[0]
+                    }).zoom(10).optimal();
+                    return true;
+                }
             }
+
 
         });
 
+
     });
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -269,7 +272,7 @@ $(document).on('ready', function() {
          return [];
          },*/
         themeResult: function(result) {
-            output = '<h5>' + result.title + '</h5>';
+            output = '' + result.title + '';
             /*output += '<p>' + result.categoria +'</p>';*/
             return output;
         },

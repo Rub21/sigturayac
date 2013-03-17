@@ -2876,6 +2876,22 @@ table th[class*="span"],
 .icon-dormir {
     background: url("../img/dormir.png") no-repeat ;
 }
+.icon-comer {
+    background: url("../img/comer.png") no-repeat ;
+}
+.icon-transporte {
+    background: url("../img/transporte.png") no-repeat ;
+}
+
+.icon-comprar {
+    background: url("../img/comprar.png") no-repeat ;
+}
+
+
+.icon-corredor {
+    background: url("../img/corredor.png") no-repeat ;
+}
+/******************************/
 
 .dropup,
 .dropdown {

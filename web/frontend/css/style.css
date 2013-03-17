@@ -438,6 +438,8 @@ CLOSE
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   filter: alpha(opacity=80);
   z-index: 20;
+
+  /* transition: opacity 0.3s linear 0s, top 0.3s ease-out 0s;*/
   }
 
 

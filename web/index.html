@@ -48,13 +48,13 @@
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a class='select_hotel' href="#"  class="dropdown-toggle" data-toggle="dropdown"><i class="icon-dormir"></i>Donde Dormir <b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
+                                        <a  href="#"  class="dropdown-toggle" data-toggle="dropdown"><i class="icon-dormir"></i>Donde Dormir<b class="caret"></b></a>
+                                        <ul class="dropdown-menu select_hotel">
                                             <li><a href="#">Sin Categoria</a></li>
                                             <li><a href="#">1 Estrella</a></li>
                                             <li><a href="#">2 Estrellas</a></li>
                                             <li><a href="#">3 Estrellas</a></li>
-                                            <li><a href="#">4 Estrelas</a></li>
+                                            <li><a href="#">4 Estrellas</a></li>
                                             <li class="divider"></li>
                                             <li><a href="#">Todos</a></li>
 
@@ -62,10 +62,22 @@
 
 
                                     </li>
-                                    <li><a href="#"><i class="icon-food icon-white"></i>Donde Comer</a></li> 
-                                    <li><a href="#"><i class="icon-plane icon-white"></i>Como Viajar</a></li> 
-                                    <li><a href="#">Donde Comparar</a></li>
+                                    <li><a href="#"><i class="icon-comer"></i>Donde Comer</a></li> 
+                                    <li><a href="#"><i class="icon-transporte"></i>Como Viajar</a></li> 
+                                    <li><a href="#"><i class="icon-comprar"></i>Donde Comparar</a></li>
                                     <li><a href="#">Otros</a></li>
+                                    <li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown"><i class="icon-corredor"></i>Corredores Turisticos <b class="caret"></b></a>
+                                        <ul class="dropdown-menu select_corredor">    
+                                            <li><a href="#">Corredor Wari-Chanka-Inca</a></li>
+                                            <li><a href="#">Corredor Nazca-Chanka-Inca</a></li>
+                                            <li><a href="#">Corredor Paracas-Huaytará-Ayacucho</a></li>
+                                            <li><a href="#">Ruta Puquio-Cora Cora-Sara Sara</a></li>
+                                            <li><a href="#">Ruta Huancapi-Carapo-Huancasancos</a></li>
+                            
+
+                                        </ul>
+
+                                    </li>
 
                                 </ul>
 
@@ -87,33 +99,12 @@
 
         <!-- block map -->
         <div id="map" class="loading"></div>
-
-
         <!-- block midle content  -->
         <div align="center" id="middle_content">
-
-
-
-
-
             <!-- Button to trigger modal -->
-            <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
-
-
-
-
-
-
-
-
-
         </div>    
 
-
-
-
-
-        <!-- Modal -->
+        <!-- Modal over boostarp-->
         <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -140,9 +131,9 @@
         <!-- block footer  -->
         <div id="footer">
             <div class="center">
-                <p><a class="button" href='#opendata'>Datos Abiertos</a></p>
+                <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
 
-                <p><a  class="button"  href='#howto'>Como desarrollar</a></p>
+
                 <div class="separator">--</div>
                 <span>Desarrollado con <a href='http://tilemill.com' title='TileMill'> TileMill</a></span>
                 <a href="http://mapbox.com/" target='_blank'><img src="images/mapbox.png"></a>
@@ -152,8 +143,6 @@
         <div id='detail' class='sig_popover'></div>
 
         <div id='sub_detail' class='popover_overdetail'></div>
-
-
 
         <a id='close' href='#close'>✕</a>
         <a id='close_overdetail' href='#close'>✕</a>

@@ -16,10 +16,10 @@
                         <div class="span4">
                             <select name='category' id='category-h' align="left" >
                                 <option value='Sin Categoria'>Sin Categoria</option>
-                                <option value='1 Estrellas'>1 Estrellas</option>
+                                <option value='1 Estrella'>1 Estrella</option>
                                 <option value='2 Estrellas'>2 Estrellas</option>
-                                <option value='3 Estrella'>3 Estrella</option>
-                                <option value='4 Estrella'>4 Estrella</option>
+                                <option value='3 Estrellas'>3 Estrellas</option>
+                                <option value='4 Estrellas'>4 Estrellas</option>
                                 <!--<option value='5 Estrella'>5 Estrella</option>-->
                             </select>
                         </div>
