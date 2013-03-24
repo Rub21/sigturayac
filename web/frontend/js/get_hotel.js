@@ -31,7 +31,7 @@ function mm_hotel(callback) {
             //features.push(x[i]);
             features_data.push(x[i]);//global variable
         }
-        console.log('Segundo por aqui' + features_data);
+        //console.log('Segundo por aqui' + features_data);
         //return callback(features_data);
         return callback;
     }

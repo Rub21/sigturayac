@@ -1,6 +1,5 @@
 
 <form name="form" id="form-r" method="post"  action="<%=request.getContextPath()%>/SRegistrarRecurso" enctype="multipart/form-data" >
-
     <div class="container">
         <div class="row">                  
             <div class="well span8" align="center">

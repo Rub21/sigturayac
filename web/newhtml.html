@@ -1,12 +1,11 @@
-<div class="container" id="popover_recurso">'+
-    '<div class="well">'+
-        // '<div id="id_categoria">Categoria: </div>'+
+<div id="popover_recurso">'+
+    '<div class=" content well">'+
         '<div class="navbar ">'+
-            '<dic class="img_popover"> <img src="http://a.tiles.mapbox.com/v3/marker/pin-m-'+pro.properties['marker-symbol']+'+000.png" alt=""></dic>'+
+            '<div class="img_popover"> <img src="http://dl.dropbox.com/u/43116811/icon-tur/'+rec.properties['marker-symbol']+'-l.png" alt=""></div>'+
             '<div class="navbar-inner">'+
                 '<div class="container">'+
                     '<a class="brand" href="#">'+
-                        pro.nombre+
+                        rec.nombre+
                         '</a>'+
                     '<ul class="nav pull-right" >'+
                         '<li>'+
@@ -24,22 +23,25 @@
                                 link3+
                                 '</a>'+
                             '</li>'+
-                        '</ul style="line-height: auto; ">'+
+                        '<li>'+
+                            '<a href="#' + rec.idproducto + '" onclick="call_map(\'' + rec.idproducto + '\')">Servicios Adiconales'+
+                                '</a>'+
+                            '</li>'+
+                        '</ul>'+
                     '</div>'+
                 '</div>'+
             '</div>'+        
         '<div class="row-fluid">'+
             '<div class="span6">'+
                 '<p  class="well">'+
-                    pro.descripcion+
+                    rec.descripcion+
                     '</p>'+
-                '<div class="id_detalles_reurso">'+
-
+                '<div id="id_detalles_recurso">'+
                     '</div>'+
                 '</div>'+
-                '<div  id="carrucel" class="span6" style="line-height: auto; width: 150px">'+
-       
+            '<div  id="carrucel" class="span6">'+       
                 '</div>'+
-            //'</div>'+
+            '</div>'+
         '</div>'+
-    '</div>
+        '<div id="maps"></div>'+
+    '</div>';

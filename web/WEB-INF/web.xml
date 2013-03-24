@@ -36,6 +36,10 @@
         <servlet-name>SListarHotel</servlet-name>
         <servlet-class>tur.servlet.SListarHotel</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SListarRecurso2</servlet-name>
+        <servlet-class>tur.servlet.SListarRecurso2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SRegistrarRecurso</servlet-name>
         <url-pattern>/SRegistrarRecurso</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>SListarHotel</servlet-name>
         <url-pattern>/SListarHotel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListarRecurso2</servlet-name>
+        <url-pattern>/SListarRecurso2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
