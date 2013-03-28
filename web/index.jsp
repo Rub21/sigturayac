@@ -27,11 +27,7 @@
         </ul>
       </div>
     </div>
-      
-      
-      
-      
-    <!-- block map -->
+          <!-- block map -->
     <div id="map" class="loading"></div>
      <!-- block for arrow under  the map -->
     <div align="center" id="arrow_show_block"><a href="#">X</a></div>
