@@ -2876,8 +2876,14 @@ table th[class*="span"],
 .icon-dormir {
     background: url("../img/dormir.png") no-repeat ;
 }
+.icon-dormir-black {
+    background: url("../img/dormir-b.png") no-repeat ;
+}
 .icon-comer {
     background: url("../img/comer.png") no-repeat ;
+}
+.icon-comer-black {
+    background: url("../img/comer-b.png") no-repeat ;
 }
 .icon-transporte {
     background: url("../img/transporte.png") no-repeat ;

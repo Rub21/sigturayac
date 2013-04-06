@@ -15,35 +15,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import tur.datasource.BDConnecion;
-import tur.manager.ManagerRecurso;
+import tur.manager.ManagerRestaurant;
+import tur.manager.ManagerTransporte;
 
 /**
  *
  * @author ruben
  */
-public class SListarRecurso2 extends HttpServlet {
+public class SListarTransporte extends HttpServlet {
 
-    ManagerRecurso mRecurso = null;
-
+    ManagerTransporte managerTransporte=null;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
-        ServletContext ctx = this.getServletConfig().getServletContext();
+     
+         ServletContext ctx = this.getServletConfig().getServletContext();
         BDConnecion conexion = new BDConnecion(ctx);
-        mRecurso = new ManagerRecurso(conexion);
-        // BRecurso bRecurso = new BRecurso();
+        managerTransporte = new ManagerTransporte(conexion);
+       // BRecurso bRecurso = new BRecurso();
         List list = new LinkedList();
         try {
-            list = mRecurso.listarrecurso();
-            System.out.println("---------" + list.toString());
+            list = managerTransporte.listarTransporte();
+            System.out.println("---------" +list.toString());
             String json = new Gson().toJson(list);
-
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-
-            response.getWriter().write(json);
+            response.getWriter().write("callback("+json+")");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

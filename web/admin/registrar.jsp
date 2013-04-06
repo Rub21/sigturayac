@@ -35,10 +35,10 @@
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Planta Turistica<b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#hotel">Hotel</a></li>
-                                        <li><a href="#">Restaurant</a></li>
+                                        <li><a href="#restaurant">Restaurant</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Medios de Transporte</a></li>
+                                <li><a href="#transporte">Medios de Transporte</a></li>
                                 <li><a href="#">Servicios Coplementarios</a></li>
 
 
@@ -60,9 +60,12 @@
                     Bienvenido a la sitio de administracion de Producto turistico de la Region de Ayacucho.
                 </div>
 
+
             </div>
 
         </div>
+
+        ${confirmacion}       
         <div id='backdrop'></div>
         <div class="total-container" id='recurso'>
             <%@ include file="recurso.jspf" %>
@@ -74,16 +77,26 @@
             <%@ include file="hotel.jspf" %>            
         </div>
 
+        <div class="total-container" id='restaurant'>            
+            <%@ include file="restaurant.jspf" %>            
+        </div>
+
+        <div class="total-container" id='transporte'>            
+            <%@ include file="transporte.jspf" %>            
+        </div>
+
         <!--Scripts-->		
         <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
         <script src='http://code.jquery.com/jquery-1.8.2.js'></script>
         <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
         <script src='js/underscore.min.js'></script>
         <script src='js/bootstrap.js'></script>        
-        <script src='js/app_map.js' ></script>
+        <script src='js/fun_map.js' ></script>
         <script src='js/app.js' ></script>
         <script src='js/form_recurso.js' ></script>
         <script src='js/form_hotel.js' ></script>
+        <script src='js/form_restaurant.js' ></script>
+        <script src='js/form_transporte.js' ></script>
         <script src='js/form_validate.js' ></script>
     </body>
 </html>

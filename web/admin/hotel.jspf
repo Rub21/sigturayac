@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">                  
             <div class="well span8" align="center">
-                <h4> Generalidades de Planta Turística</h4>
+                <h4> Generalidades de Planta Turística - Hoteles</h4>
                 <div class="container-fluid">
                     <div class="row-fluid">
                         <div class="span4">Nombre del Servico </div>
@@ -33,13 +33,13 @@
                     <div class="row-fluid">
                         <div class="span4">Direción</div>
                         <div class="span4">
-                            <input type='text'  name='direction' value=''  align="left" id='name-h' placeholder="Ingrese Direción del Servicio" required/>
+                            <input type='text'  name='direction' value=''  align="left" id='name-h' placeholder="Ingrese Direción del Servicio" />
                         </div>
                     </div>
                     <div class="row-fluid">
                         <div class="span4"> Telefono</div>
                         <div class="span4">
-                            <input type='text'  name='phone' value=''  align="left" id='name-h' placeholder="Ingrese Telefono del Servicio" required/>
+                            <input type='text'  name='phone' value=''  align="left" id='name-h' placeholder="Ingrese Telefono del Servicio" />
                         </div>
                     </div>
 

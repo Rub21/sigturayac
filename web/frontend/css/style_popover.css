@@ -79,3 +79,28 @@ Cutom carrucel
   color:#fff;
 }
 
+/*-----------------------------------
+Ancla
+-------------------------------------*/
+
+.ancla{
+  position:fixed;
+  bottom:10px;
+  right: 1.5%;
+  width:64px;
+  height:64px;
+  background-image: url(../img/arrow_top.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+a .ancla{
+  display:block;
+}
+
+
+.icon-flag.logo-icon {
+  width: 28px;  // 14px * 2
+  height: 28px; // 14px * 2
+  background-size: 938px 318px;  // original dimensions * 2
+  background-position: -624px -48px;  // original position * 2
+}

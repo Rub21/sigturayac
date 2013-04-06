@@ -1,5 +1,5 @@
 function map(id){
-    //recepcion de r,h
+    //recepcion de r,h,re    
     var m = mapbox.map('map-'+id, mapbox.layer().id('examples.map-4l7djmvo')),
     point,
     _d, // Down Event

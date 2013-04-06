@@ -39,14 +39,8 @@ function clean_filed(id) {
                 .val('')
                 .removeAttr('checked')
                 .removeAttr('selected');
-        /*
-         $("input[type=text], textarea").val("");
-         $("#collapse-"+id).removeClass('in');  */
-        //$(this).addClass('active');
     });
 
-
-// e.preventDefault();
 }
 
 
@@ -61,25 +55,29 @@ function initializer() {
     enable_check('h');
     add_imagen('h');
     clean_filed('h');
+    //restaurant
+    map('re');
+    enable_check('re');
+    add_imagen('re');
+    clean_filed('re');
 
-
+    //transporte
+    map('t');
+    enable_check('t');
+    add_imagen('t');
+    clean_filed('t');
 }
 
 initializer();
 $(function() {
-
-    /******************/
-    //$('#backdrop').fadeIn(200);
-    // $('#hotel').show(200); 
-    /*$('#backdrop').fadeIn(200);
-     $('#recurso').show(200);*/
-
 
     $('a[href="#recurso"]').click(function(e) {
         e.preventDefault();
         $('#backdrop').fadeIn(200);
         $('#recurso').show(200);
         $('#hotel').hide(200);
+        $('#restaurant').hide(200);
+        $('#transporte').hide(200);
     });
 
     $('a[href="#hotel"]').click(function(e) {
@@ -87,14 +85,34 @@ $(function() {
         $('#backdrop').fadeIn(200);
         $('#hotel').show(200);
         $('#recurso').hide(200);
-        $('#mancult').hide(200);
+        $('#restaurant').hide(200);
+        $('#transporte').hide(200);
     });
 
+    $('a[href="#restaurant"]').click(function(e) {
+        e.preventDefault();
+        $('#backdrop').fadeIn(200);
+        $('#restaurant').show(200);
+        $('#recurso').hide(200);
+        $('#hotel').hide(200);
+        $('#transporte').hide(200);
+    });
+
+    $('a[href="#transporte"]').click(function(e) {
+        e.preventDefault();
+        $('#backdrop').fadeIn(200);
+        $('#restaurant').hide(200);
+        $('#recurso').hide(200);
+        $('#hotel').hide(200);
+        $('#transporte').show(200);
+    });
     $('a[href="#close"]').click(function(e) {
         e.preventDefault();
         $('#backdrop').fadeOut(200);
         $('#recurso').hide(200);
         $('#hotel').hide(200);
+        $('#restaurant').hide(200);
+        $('#transporte').hide(200);
     });
 
 

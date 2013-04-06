@@ -19,10 +19,11 @@ map.setZoomRange(0, 18);
 
 function mapData(f) {
     features = f;
-    //console.log('ultimopor aqui' + features);
+
+    //console.log(features);
+
     markerLayer = mapbox.markers.layer().features(features);
     markerLayer.factory(function(m) {
-
         //var elem = mapbox.markers.simplestyle_factory(m);
         var elem = simplestyle_factory_rub(m);
         MM.addEvent(elem, 'click', function(e) {
@@ -31,7 +32,6 @@ function mapData(f) {
                 lon: m.geometry.coordinates[0]
             }).zoom(map.zoom()).optimal();
         });
-
         return elem;
     });
 
@@ -107,7 +107,7 @@ function buscarproducto(id) {
 simplestyle_factory_rub = function(feature) {
 
     var sizes = {
-        small: [20, 50],
+        small: [30, 50],
         medium: [30, 70],
         large: [35, 90]
     };
@@ -118,8 +118,8 @@ simplestyle_factory_rub = function(feature) {
     //var symbol = (fp['marker-symbol']) ? '-' + fp['marker-symbol'] : '';
     var symbol = fp['marker-symbol'];
     //console.log(symbol);
-    var color = fp['marker-color'] || '7e7e7e';
-    color = color.replace('#', '');
+    //var color = fp['marker-color'] || '7e7e7e';
+    // color = color.replace('#', '');
 
     var d = document.createElement('img');
     d.width = sizes[size][0];
@@ -127,17 +127,6 @@ simplestyle_factory_rub = function(feature) {
     d.className = 'simplestyle-marker';
     d.alt = fp.title || '';
     d.src = 'http://dl.dropbox.com/u/43116811/icon-tur/' + symbol + '-l.png';
-    //console.log(d.src);
-
-    /* (mapbox.markers.marker_baseurl || 'http://a.tiles.mapbox.com/v3/marker/') +
-     'pin-' +
-     // Internet Explorer does not support the `size[0]` syntax.
-     
-     size.charAt(0) + symbol + '+' + color +
-     ((window.devicePixelRatio === 2) ? '@2x' : '') +
-     '.png';*/
-    // Support retina markers for 2x devices
-
     var ds = d.style;
     ds.position = 'absolute';
     ds.clip = 'rect(auto auto ' + (sizes[size][1] * 0.75) + 'px auto)';
@@ -145,7 +134,6 @@ simplestyle_factory_rub = function(feature) {
     ds.marginLeft = -(sizes[size][0] / 2) + 'px';
     ds.cursor = 'pointer';
     ds.pointerEvents = 'all';
-
     return d;
 };
 
@@ -208,8 +196,8 @@ $(document).on('ready', function() {
 
 
     /*-----------------------------------
-    close popover
-    -------------------------------------*/
+     close popover
+     -------------------------------------*/
     $("#butoon_close").live('click', function(event) {
         $('#close').trigger('click');
     });
@@ -222,8 +210,8 @@ $(document).on('ready', function() {
     });
 
     /*-----------------------------------
-    Selecion de Recurso turistico
-    -------------------------------------*/
+     Selecion de Recurso turistico
+     -------------------------------------*/
     $('.select_recurso a').click(function(e) {
         var categoria = $(this).text().toLowerCase().replace(/\s/g, "");
         if (categoria === 'todos') {
@@ -254,17 +242,17 @@ $(document).on('ready', function() {
     });
 
     /*-----------------------------------
-    Seleccion de Hoteles
-    -------------------------------------*/
+     Seleccion de Hoteles
+     -------------------------------------*/
     $('.select_hotel a').click(function(e) {
         var categoria = $(this).text().toLowerCase().replace(/\s/g, "");
         if (categoria === 'todos') {
             markerLayer.filter(function(features) {
                 if (features.clase.toLowerCase().replace(/\s/g, "") === 'hotel') {
                     /*map.ease.location({
-                        lat: features.geometry.coordinates[1],
-                        lon: features.geometry.coordinates[0]
-                    }).zoom(10).optimal();*/
+                     lat: features.geometry.coordinates[1],
+                     lon: features.geometry.coordinates[0]
+                     }).zoom(10).optimal();*/
                     return true;
                 }
             });
@@ -272,9 +260,9 @@ $(document).on('ready', function() {
             markerLayer.filter(function(features) {
                 if (features.categoria.toLowerCase().replace(/\s/g, "") === categoria) {
                     /*map.ease.location({
-                        lat: features.geometry.coordinates[1],
-                        lon: features.geometry.coordinates[0]
-                    }).zoom(10).optimal();*/
+                     lat: features.geometry.coordinates[1],
+                     lon: features.geometry.coordinates[0]
+                     }).zoom(10).optimal();*/
                     return true;
                 }
 
@@ -284,13 +272,8 @@ $(document).on('ready', function() {
 
     $('.select_corredor a').click(function(e) {
         var corredor = $(this).text().toLowerCase().replace(/\s/g, "");
-
-        //alert(corredor);
         markerLayer.filter(function(features) {
-
             if (features.clase.toLowerCase().replace(/\s/g, "") === 'recursoturístico') {
-
-                //console.log(features.corredor.toLowerCase().replace(/\s/g, ""));
                 if (features.corredor.toLowerCase().replace(/\s/g, "") === corredor) {
                     map.ease.location({
                         lat: features.geometry.coordinates[1],
@@ -299,11 +282,7 @@ $(document).on('ready', function() {
                     return true;
                 }
             }
-
-
         });
-
-
     });
 
 

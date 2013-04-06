@@ -100,7 +100,9 @@ a {
     -webkit-box-shadow:0 2px 6px rgba(0,0,0,0.25);
     box-shadow:0 2px 6px rgba(0,0,0,0.25);
 }
-#map,#map-r, #map-h{  /*maps for recurso , hotel*/  
+
+
+#map,#map-r, #map-h, #map-re,#map-t{  /*maps for recurso , hotel, REstaurant*/  
     background:#f3f3f3;
     width:560px;
     border:1px solid #808080;
@@ -121,8 +123,11 @@ a {
 }
 
 
-.total-container/*sig_popover*/{
-    /*background: #000;*/
+/* ------------------------------------------
+  Container for to show the form
+---------------------------------------------*/
+
+.total-container{  
     width: 623px;
     height: auto;  
     display: none;
@@ -140,8 +145,6 @@ a {
 /*-----------------------------------
   Lil Helpers
 -------------------------------------*/
-/*Markup free clearing
-Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack*/
 .clearfix:after {
     content:'';
     display:block;
@@ -167,8 +170,10 @@ Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack*/
     z-index: 99;
 }
 
+/*-----------------------------------
+Customiser boostrap
+-------------------------------------*/
 
-/*for boostrap*/
 .container .row .well {
     padding: 1px;
 }
@@ -189,8 +194,6 @@ Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack*/
 .container .row accordion-inner .formap{
     padding: 0px;
 }
-
-
 .container .file_upload  input[type="text"]{
     margin-top: 7px;
     height: 30px;
@@ -230,10 +233,6 @@ Details: http: //perishablepress.com/press/2009/12/06/new-clearfix-hack*/
 }
 
 
-
-/*input:invalid {
-    border: 1px solid red;
-}*/
 .error{
     color: #FF0000;
 }

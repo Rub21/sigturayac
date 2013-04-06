@@ -40,6 +40,22 @@
         <servlet-name>SListarRecurso2</servlet-name>
         <servlet-class>tur.servlet.SListarRecurso2</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SRegistrarRestaurant</servlet-name>
+        <servlet-class>tur.servlet.SRegistrarRestaurant</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SListarRestaurant</servlet-name>
+        <servlet-class>tur.servlet.SListarRestaurant</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SRegistrarTransporte</servlet-name>
+        <servlet-class>tur.servlet.SRegistrarTransporte</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SListarTransporte</servlet-name>
+        <servlet-class>tur.servlet.SListarTransporte</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SRegistrarRecurso</servlet-name>
         <url-pattern>/SRegistrarRecurso</url-pattern>
@@ -59,6 +75,22 @@
     <servlet-mapping>
         <servlet-name>SListarRecurso2</servlet-name>
         <url-pattern>/SListarRecurso2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SRegistrarRestaurant</servlet-name>
+        <url-pattern>/SRegistrarRestaurant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListarRestaurant</servlet-name>
+        <url-pattern>/SListarRestaurant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SRegistrarTransporte</servlet-name>
+        <url-pattern>/SRegistrarTransporte</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListarTransporte</servlet-name>
+        <url-pattern>/SListarTransporte</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
