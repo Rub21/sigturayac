@@ -56,6 +56,14 @@
         <servlet-name>SListarTransporte</servlet-name>
         <servlet-class>tur.servlet.SListarTransporte</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SRegistrarComplementario</servlet-name>
+        <servlet-class>tur.servlet.SRegistrarComplementario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SListarComplementario</servlet-name>
+        <servlet-class>tur.servlet.SListarComplementario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SRegistrarRecurso</servlet-name>
         <url-pattern>/SRegistrarRecurso</url-pattern>
@@ -91,6 +99,14 @@
     <servlet-mapping>
         <servlet-name>SListarTransporte</servlet-name>
         <url-pattern>/SListarTransporte</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SRegistrarComplementario</servlet-name>
+        <url-pattern>/SRegistrarComplementario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListarComplementario</servlet-name>
+        <url-pattern>/SListarComplementario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tur.bean.BDestino;
 import tur.bean.BGeometry;
 import tur.bean.BImagen;
 import tur.bean.BTransporte;
@@ -24,7 +25,7 @@ import tur.bean.BTransporte;
  * @author ruben
  */
 public class DAOTransporte {
-
+    
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
@@ -32,14 +33,18 @@ public class DAOTransporte {
     Connection conni = null;
     PreparedStatement pstmti = null;
     ResultSet rsi = null;
-    //habitacion
-
+    //destino
+    Connection connd = null;
+    PreparedStatement pstmtd = null;
+    ResultSet rsd = null;
+    
     public DAOTransporte(Connection conn) {
         this.conn = conn;
         this.conni = conn;
-
+        this.connd = conn;
+        
     }
-
+    
     public void registrartransporte(BTransporte bTransporte) {
 
 //SELECT insert_transporte('16p', 'Cruz del sur', 'Transporte', true, '16pre' , 'muy caros', 'Jr Mariscal Caceres', '310225','www..w.w.','de lunes a viernes',-74.265, -12.9845)
@@ -49,7 +54,7 @@ public class DAOTransporte {
                     + " '" + bTransporte.getNombre() + "',"
                     + " '" + bTransporte.getClase() + "', "
                     + bTransporte.isEstado() + ", "
-                    + "'" + bTransporte.getIdrestaurant() + "' ,"
+                    + "'" + bTransporte.getIdtransporte() + "' ,"
                     + " '" + bTransporte.getDescripcion() + "', "
                     + "'" + bTransporte.getDireccion() + "', "
                     + "'" + bTransporte.getTelefono() + "',"
@@ -61,7 +66,7 @@ public class DAOTransporte {
             //System.out.println(sql);
             String sql_dest = "";
             for (int i = 0; i < bTransporte.getDestinos().size(); i++) {
-                sql_dest += "INSERT INTO destino( nombre, idtransporte) VALUES ('"+bTransporte.getDestinos().get(i).getNombre()+"', '"+bTransporte.getDestinos().get(i).getIdtransporte()+"');";
+                sql_dest += "INSERT INTO destino( nombre, idtransporte) VALUES ('" + bTransporte.getDestinos().get(i).getNombre() + "', '" + bTransporte.getDestinos().get(i).getIdtransporte() + "');";
             }
             System.out.println(sql);
             String sql_img = "";
@@ -82,38 +87,36 @@ public class DAOTransporte {
             System.out.println("erorr en sql" + ex.toString());
             Logger.getLogger(DAOHotel.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
-
-   
     
-       public List listarTransporte() {
-
+    public List listarTransporte() {
+        
         List list = new LinkedList();
-
+        
         try {
-
+            
             String sql = "SELECT idproducto, nombre, clase, estado, idtransporte, descripcion, direccion, telefono,sitio, hora_aten, lat, lon FROM select_transporte;";
             //System.out.println("--:" + sql);
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-             
-                BTransporte bTransporte= new BTransporte();
+                
+                BTransporte bTransporte = new BTransporte();
                 BGeometry bGeometry = new BGeometry();
                 //Producto                
                 bTransporte.setIdproducto(rs.getString("idproducto"));
                 bTransporte.setNombre(rs.getString("nombre"));
                 bTransporte.setClase(rs.getString("clase"));
                 bTransporte.setEstado(rs.getBoolean("estado"));
-                //Restaurant
-                bTransporte.setIdrestaurant(rs.getString("idtransporte"));               
+                //Transporte
+                bTransporte.setIdtransporte(rs.getString("idtransporte"));
                 bTransporte.setDescripcion(rs.getString("descripcion"));
                 bTransporte.setDireccion(rs.getString("direccion"));
                 bTransporte.setTelefono(rs.getString("telefono"));
                 bTransporte.setSitio(rs.getString("sitio"));
                 bTransporte.setHora_aten(rs.getString("hora_aten"));
-               
+
                 //Geometry
                 bGeometry.setLatitud(rs.getDouble("lat"));
                 bGeometry.setLongitud(rs.getDouble("lon"));
@@ -122,7 +125,9 @@ public class DAOTransporte {
                 bTransporte.setGeometry(bGeometry);
                 //Imagen
                 bTransporte.setImagenes(listarimagen(bTransporte.getIdproducto()));
-     
+                //destion
+                bTransporte.setDestinos(listardestinos(bTransporte.getIdtransporte()));
+                
                 list.add(bTransporte);
             }
             pstmt.close();
@@ -132,13 +137,13 @@ public class DAOTransporte {
         }
         return list;
     }
-
+    
     public ArrayList<BImagen> listarimagen(String id) {
-
+        
         ArrayList<BImagen> list = new ArrayList<BImagen>();
         try {
             String sql = "SELECT url, titulo, decripcion, idproducto  FROM imagen where idproducto='" + id + "';";
-            System.out.println("-----------SQL IMAGEN-----" + sql);
+            //System.out.println("-----------SQL IMAGEN-----" + sql);
             pstmti = conni.prepareStatement(sql);
             rsi = pstmti.executeQuery();
             while (rsi.next()) {
@@ -151,13 +156,35 @@ public class DAOTransporte {
             }
             pstmti.close();
             rsi.close();
-
+            
         } catch (SQLException ex) {
             System.out.println("Error en Listar Imagen: " + ex);
         }
         return list;
-
+        
+    }
+    
+    public ArrayList<BDestino> listardestinos(String id) {
+        
+        ArrayList<BDestino> list = new ArrayList<BDestino>();
+        try {
+            String sql = "SELECT nombre, idtransporte  FROM destino where idtransporte='" + id + "'";
+            System.out.println("--------------destino" + sql);            
+            pstmtd = connd.prepareStatement(sql);
+            rsd = pstmtd.executeQuery();
+            while (rsd.next()) {
+                BDestino bDestino = new BDestino();
+                bDestino.setNombre(rsd.getString("nombre"));
+                bDestino.setIdtransporte(rsd.getString("idtransporte"));
+                list.add(bDestino);
+            }
+            pstmtd.close();
+            rsd.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error en Listar Destino: " + ex);
+        }
+        return list;
+        
     }
 }
-
-

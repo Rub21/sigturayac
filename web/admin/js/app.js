@@ -66,6 +66,11 @@ function initializer() {
     enable_check('t');
     add_imagen('t');
     clean_filed('t');
+    //servicios Complementario
+    map('c');
+    enable_check('c');
+    add_imagen('c');
+    clean_filed('c');
 }
 
 initializer();
@@ -78,6 +83,7 @@ $(function() {
         $('#hotel').hide(200);
         $('#restaurant').hide(200);
         $('#transporte').hide(200);
+        $('#complementario').hide(200);
     });
 
     $('a[href="#hotel"]').click(function(e) {
@@ -87,6 +93,7 @@ $(function() {
         $('#recurso').hide(200);
         $('#restaurant').hide(200);
         $('#transporte').hide(200);
+        $('#complementario').hide(200);
     });
 
     $('a[href="#restaurant"]').click(function(e) {
@@ -96,6 +103,7 @@ $(function() {
         $('#recurso').hide(200);
         $('#hotel').hide(200);
         $('#transporte').hide(200);
+        $('#complementario').hide(200);
     });
 
     $('a[href="#transporte"]').click(function(e) {
@@ -105,6 +113,17 @@ $(function() {
         $('#recurso').hide(200);
         $('#hotel').hide(200);
         $('#transporte').show(200);
+        $('#complementario').hide(200);
+    });
+
+    $('a[href="#complementario"]').click(function(e) {
+        e.preventDefault();
+        $('#backdrop').fadeIn(200);
+        $('#restaurant').hide(200);
+        $('#recurso').hide(200);
+        $('#hotel').hide(200);
+        $('#transporte').hide(200);
+        $('#complementario').show(200);
     });
     $('a[href="#close"]').click(function(e) {
         e.preventDefault();
@@ -113,9 +132,8 @@ $(function() {
         $('#hotel').hide(200);
         $('#restaurant').hide(200);
         $('#transporte').hide(200);
+        $('#complementario').hide(200);
     });
-
-
 
 });
 

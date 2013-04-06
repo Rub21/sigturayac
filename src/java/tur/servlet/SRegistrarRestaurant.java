@@ -129,7 +129,7 @@ public class SRegistrarRestaurant extends HttpServlet {
             
             managerRestaurant.registrarrestaurant(bRestaurant);
             //System.out.println("termino ");
-           sesion.setAttribute("confirmacion", "<script>alert('Se Registro Correctamente el Servicio de Restaurant')</script>");
+          // sesion.setAttribute("confirmacion", "<script>alert('Se Registro Correctamente el Servicio de Restaurant')</script>");
            response.sendRedirect("admin/registrar.jsp");
            //sesion.setAttribute("confirmacion", "");
               

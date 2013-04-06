@@ -10,28 +10,35 @@ import java.util.ArrayList;
  *
  * @author ruben
  */
-public class BTransporte extends BProducto {
+public class BComplementario extends BProducto{
 
-    private String idtransporte;  
+    private String idcomplementario;
+    private String tipo;
     private String descripcion;
     private String direccion;
     private String telefono;
     private String sitio;
     private String hora_aten;
-
     private BGeometry geometry;
     private ArrayList<BImagen> imagenes;
-    private ArrayList<BDestino> destinos;
 
-    public String getIdtransporte() {
-        return idtransporte;
+    public String getIdcomplementario() {
+        return idcomplementario;
     }
 
-    public void setIdtransporte(String idtransporte) {
-        this.idtransporte = idtransporte;
+    public void setIdcomplementario(String idcomplementario) {
+        this.idcomplementario = idcomplementario;
     }
 
 
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     public String getDescripcion() {
         return descripcion;
@@ -73,8 +80,6 @@ public class BTransporte extends BProducto {
         this.hora_aten = hora_aten;
     }
 
-
-
     public BGeometry getGeometry() {
         return geometry;
     }
@@ -90,14 +95,5 @@ public class BTransporte extends BProducto {
     public void setImagenes(ArrayList<BImagen> imagenes) {
         this.imagenes = imagenes;
     }
-
-    public ArrayList<BDestino> getDestinos() {
-        return destinos;
-    }
-
-    public void setDestinos(ArrayList<BDestino> destinos) {
-        this.destinos = destinos;
-    }
-    
     
 }

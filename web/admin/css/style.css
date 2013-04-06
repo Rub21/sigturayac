@@ -102,7 +102,7 @@ a {
 }
 
 
-#map,#map-r, #map-h, #map-re,#map-t{  /*maps for recurso , hotel, REstaurant*/  
+#map,#map-r, #map-h, #map-re, #map-t, #map-c{  /*maps for recurso , hotel, REstaurant*/  
     background:#f3f3f3;
     width:560px;
     border:1px solid #808080;
@@ -121,7 +121,6 @@ a {
     z-index:1000;
     pointer-events:all;
 }
-
 
 /* ------------------------------------------
   Container for to show the form

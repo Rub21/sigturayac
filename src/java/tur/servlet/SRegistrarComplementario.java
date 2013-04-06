@@ -20,25 +20,22 @@ import javazoom.upload.MultipartFormDataRequest;
 import javazoom.upload.UploadBean;
 import javazoom.upload.UploadException;
 import javazoom.upload.UploadFile;
-import tur.bean.BDestino;
 import tur.bean.BGeometry;
 import tur.bean.BImagen;
-import tur.bean.BDestino;
-import tur.bean.BTransporte;
+import tur.bean.BComplementario;
 import tur.datasource.BDConnecion;
 import tur.manager.ManagerProducto;
-import tur.manager.ManagerRestaurant;
-import tur.manager.ManagerTransporte;
+import tur.manager.ManagerComplementario;
 
 /**
  *
  * @author ruben
  */
-public class SRegistrarTransporte extends HttpServlet {
+public class SRegistrarComplementario extends HttpServlet {
 
     ManagerProducto managerProducto = null;
-    ManagerTransporte managerTransporte= null;
-    
+    ManagerComplementario managerComplementario = null;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, UploadException {
         response.setContentType("text/html;charset=UTF-8");
@@ -53,69 +50,55 @@ public class SRegistrarTransporte extends HttpServlet {
         BDConnecion conexion = new BDConnecion(ctx);
         //manager adn bean
         managerProducto = new ManagerProducto(conexion_producto);
-        managerTransporte = new ManagerTransporte(conexion);
-        
-        
-        
-        BTransporte bTransporte = new BTransporte();
-       // BDestino bDestino= new BDestino();
+        managerComplementario = new ManagerComplementario(conexion);
+
+
+
+        BComplementario bComplementario = new BComplementario();
         BImagen bImagen;// = new BImagen();
         BGeometry bGeometry = new BGeometry();
-        
-        
+
+
         UploadBean upBean;
         //clases for upload images
         upBean = new UploadBean();
         String direccion = request.getSession().getServletContext().getRealPath("imagenesDB/");
         upBean.setFolderstore(direccion);
-        
+
         MultipartFormDataRequest mrequest = new MultipartFormDataRequest(request);
-        
+
         mrequest.DEFAULTENCODING = "ISO-8859-1";
-        
+
         java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat("yyMMddHHmmss");//fecha        
         Hashtable files = mrequest.getFiles();
 
         //get the last idproducto             
         String idproducto = managerProducto.getlast() + "p";//id=idproducto
-        String idtransporte = idproducto + "t";
-        String clase = "Transporte";
+        String idcomplementario = idproducto + "c";
+        String clase = "Complementario";
         Boolean estado = true;
         try {
             //Datos Producto
-            bTransporte.setIdproducto(idproducto);
-            bTransporte.setNombre(mrequest.getParameter("name"));
-            bTransporte.setClase(clase);
-            bTransporte.setEstado(estado);
+            bComplementario.setIdproducto(idproducto);
+            bComplementario.setNombre(mrequest.getParameter("name"));
+            bComplementario.setClase(clase);
+            bComplementario.setEstado(estado);
 
-            //Hotel
-            bTransporte.setIdtransporte(idtransporte);
-       
-            bTransporte.setDescripcion(mrequest.getParameter("description"));
-            bTransporte.setDireccion(mrequest.getParameter("direction"));
-            bTransporte.setTelefono(mrequest.getParameter("phone"));
-            bTransporte.setSitio(mrequest.getParameter("site"));
-            bTransporte.setHora_aten(mrequest.getParameter("opening_hours"));
-           
-            //Destinos
-            ArrayList<BDestino> listdes = new ArrayList<BDestino>();
-            int num_destino = Integer.parseInt(mrequest.getParameter("num-destino"));
-            System.out.println("num_destino= " + num_destino);
-            for (int i = 1; i <= num_destino; i++) {         
-                BDestino bDestino = new BDestino();
-                bDestino.setNombre(mrequest.getParameter("destino" + i));                
-                bDestino.setIdtransporte(idtransporte);
-                listdes.add(bDestino);
-            }
-            bTransporte.setDestinos(listdes);           
-            
-            
+            //Complementario
+            bComplementario.setIdcomplementario(idcomplementario);
+            bComplementario.setTipo(mrequest.getParameter("type"));
+            bComplementario.setDescripcion(mrequest.getParameter("description"));
+            bComplementario.setDireccion(mrequest.getParameter("direction"));
+            bComplementario.setTelefono(mrequest.getParameter("phone"));
+            bComplementario.setSitio(mrequest.getParameter("site"));
+            bComplementario.setHora_aten(mrequest.getParameter("opening_hours"));
+
             // Geometry            
             bGeometry.setLatitud(Double.parseDouble(mrequest.getParameter("lat")));
             bGeometry.setLongitud(Double.parseDouble(mrequest.getParameter("lon")));
             bGeometry.setIdproducto(idproducto);
-            
-            bTransporte.setGeometry(bGeometry);
+
+            bComplementario.setGeometry(bGeometry);
             //Imagen    
             ArrayList<BImagen> listImagenes = new ArrayList<BImagen>();
             for (int i = 1; i <= files.size(); i++) {
@@ -133,25 +116,25 @@ public class SRegistrarTransporte extends HttpServlet {
                 bImagen.setTitulo(mrequest.getParameter("title_img" + i));
                 bImagen.setDescripcion(mrequest.getParameter("description_img" + i));
                 bImagen.setIdproducto(idproducto);
-                
+
                 ((UploadFile) mrequest.getFiles().get("file" + i)).setFileName(nombreImagen);
                 UploadFile file = (UploadFile) files.get("file" + i);
                 upBean.store(mrequest, "file" + i);
                 //lista de imagenes
-                listImagenes.add(bImagen);                
+                listImagenes.add(bImagen);
             }
-            
-            bTransporte.setImagenes(listImagenes);
-            
-            
-            
-            managerTransporte.registrartransporte(bTransporte);
+
+            bComplementario.setImagenes(listImagenes);
+
+
+
+            managerComplementario.registrartransporte(bComplementario);
             //System.out.println("termino ");
-          // sesion.setAttribute("confirmacion", "<script>alert('Se Registro Correctamente el Servicio de Restaurant')</script>");
-           response.sendRedirect("admin/registrar.jsp");
-           //sesion.setAttribute("confirmacion", "");
-              
-            
+            // sesion.setAttribute("confirmacion", "<script>alert('Se Registro Correctamente el Complementario de Restaurant')</script>");
+            response.sendRedirect("admin/registrar.jsp");
+            //sesion.setAttribute("confirmacion", "");
+
+
         } catch (Exception ex) {
             request.setAttribute("message", "There was an error: " + ex.getMessage());
             System.out.println("Error" + ex.getMessage());

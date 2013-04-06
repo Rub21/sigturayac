@@ -39,7 +39,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="#transporte">Medios de Transporte</a></li>
-                                <li><a href="#">Servicios Coplementarios</a></li>
+                                <li><a href="#complementario">Servicios Coplementarios</a></li>
 
 
                             </ul>
@@ -57,7 +57,7 @@
 
                 <div class=" well span12">
                     <h1>Sitio de Administracion de Producto Turistico</h1>
-                    Bienvenido a la sitio de administracion de Producto turistico de la Region de Ayacucho.
+                    <p> Bienvenido a la sitio de administracion de Producto turistico de la Region de Ayacucho.</p>
                 </div>
 
 
@@ -84,7 +84,9 @@
         <div class="total-container" id='transporte'>            
             <%@ include file="transporte.jspf" %>            
         </div>
-
+        <div class="total-container" id='complementario'>            
+            <%@ include file="complementario.jspf" %>            
+        </div>
         <!--Scripts-->		
         <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
         <script src='http://code.jquery.com/jquery-1.8.2.js'></script>
