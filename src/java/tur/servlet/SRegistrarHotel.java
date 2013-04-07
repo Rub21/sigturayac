@@ -29,7 +29,6 @@ import tur.bean.BServiciosAdicional;
 import tur.datasource.BDConnecion;
 import tur.manager.ManagerHotel;
 import tur.manager.ManagerProducto;
-import tur.manager.ManagerRecurso;
 
 /**
  *
@@ -44,9 +43,6 @@ public class SRegistrarHotel extends HttpServlet {
             throws ServletException, IOException, UploadException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
-
-
         //declarte connecion to data base and context
         ServletContext ctx = this.getServletConfig().getServletContext();
         HttpSession sesion = request.getSession();
@@ -55,18 +51,9 @@ public class SRegistrarHotel extends HttpServlet {
         //manager adn bean
         managerProducto = new ManagerProducto(conexion_producto);
         managerHotel = new ManagerHotel(conexion);
-
-
-
         BHotel bHotel = new BHotel();
         BImagen bImagen;// = new BImagen();
         BGeometry bGeometry = new BGeometry();
-
-
-
-
-
-
         UploadBean upBean;
         //clases for upload images
         upBean = new UploadBean();
@@ -181,9 +168,15 @@ public class SRegistrarHotel extends HttpServlet {
             bHotel.setbGeometry(bGeometry);
             bHotel.setImagenes(listImagenes);
 
-            managerHotel.registrarHotel(bHotel);
-            //System.out.println("termino ");
+            managerHotel.registrarHotel(bHotel);               
+            sesion.setAttribute("conf", "conf");
             response.sendRedirect("admin/registrar.jsp");
+            
+            
+            
+            
+            
+            
         } catch (Exception ex) {
             request.setAttribute("message", "There was an error: " + ex.getMessage());
             System.out.println("Error" + ex.getMessage());

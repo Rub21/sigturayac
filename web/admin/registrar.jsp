@@ -1,13 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE>
 <%
-/*
-   String usuario = (String) session.getAttribute("user");
-   if(usuario==null)
-   {
-       response.sendRedirect("login.jsp");
-   }
-*/
+    /*
+     String usuario = (String) session.getAttribute("user");
+     if(usuario==null)
+     {
+     response.sendRedirect("login.jsp");
+     }
+     */
+%>
+
+<%
+    String conf = (String) session.getAttribute("conf");
+    if (conf == null) {
+%>
+<script>
+
+
+</script>
+<%} else {%>
+<script>
+
+   alert('Los Datos Fueron Registrados');
+
+</script>
+<%}
+    session.setAttribute("conf", null);
 %>
 <html>
     <head>
@@ -19,6 +37,7 @@
         <link href='css/mapbox.css' rel='stylesheet' />
     </head>
     <body>
+
         <div id='masthead'>
             <div id='header' class='limiter'>
                 <h1><a href='/'><span class='brand'>Seg</span>Ayac <span class='subtitle'>Formulario para el Registro de Recurso Turistico</span></a></h1>
@@ -55,9 +74,9 @@
 
                             <div class="pull-right">
                                 Bienvenido : ${user}
-                                
+
                                 <p><a href="${pageContext.request.contextPath}/SCerrarsesion">Cerrar Sesion</a></p>
-                                
+
                             </div>
                         </div><!-- /.nav-collapse -->
                     </div>
@@ -77,7 +96,7 @@
 
         </div>
 
-              
+
         <div id='backdrop'></div>
         <div class="total-container" id='recurso'>
             <%@ include file="recurso.jspf" %>
@@ -99,6 +118,9 @@
         <div class="total-container" id='complementario'>            
             <%@ include file="complementario.jspf" %>            
         </div>
+
+        <div class="alert" >HOLAS</div>
+
         <!--Scripts-->		
         <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
         <script src='http://code.jquery.com/jquery-1.8.2.js'></script>

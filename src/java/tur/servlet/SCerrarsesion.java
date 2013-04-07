@@ -18,18 +18,17 @@ import javax.servlet.http.HttpSession;
  */
 public class SCerrarsesion extends HttpServlet {
 
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-         HttpSession sesion = request.getSession();
+        HttpSession sesion = request.getSession();
         try {
 
-            sesion.invalidate();            
-             response.sendRedirect("admin/login.jsp");
-            
-        } finally {            
+            sesion.invalidate();
+            response.sendRedirect("admin/login.jsp");
+
+        } finally {
             out.close();
         }
     }

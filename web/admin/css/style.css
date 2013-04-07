@@ -235,3 +235,12 @@ Customiser boostrap
 .error{
     color: #FF0000;
 }
+
+.alert{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    display: none;
+    z-index: 9999;
+    
+}

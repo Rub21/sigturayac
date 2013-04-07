@@ -36,7 +36,7 @@ import tur.manager.ManagerRecurso;
  */
 public class SRegistrarRecurso extends HttpServlet {
 
-    ManagerProducto managerProducto=null;
+    ManagerProducto managerProducto = null;
     ManagerRecurso managerrecurso = null;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -48,15 +48,15 @@ public class SRegistrarRecurso extends HttpServlet {
         HttpSession sesion = request.getSession();
         BDConnecion conexion_producto = new BDConnecion(ctx);
         BDConnecion conexion = new BDConnecion(ctx);
-        
+
         //manager adn bean
-        managerProducto= new  ManagerProducto(conexion_producto);
+        managerProducto = new ManagerProducto(conexion_producto);
         managerrecurso = new ManagerRecurso(conexion);
 
         BRecurso bRecurso = new BRecurso();
         BImagen bImagen;// = new BImagen();
         BGeometry bGeometry = new BGeometry();
-        BDetalle bDetalle= new BDetalle();
+        BDetalle bDetalle = new BDetalle();
 
         UploadBean upBean;
         //clases for upload images
@@ -70,36 +70,36 @@ public class SRegistrarRecurso extends HttpServlet {
 
         java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat("yyMMddHHmmss");//fecha        
         Hashtable files = mrequest.getFiles();
-        
-                
+
+
         //get the last id
-        String id=managerProducto.getlast()+"p";//id=idproducto
-        String idrecurso=id+"r";
-        String clase="Recurso Turístico";
-        Boolean estado=true;
-        
-        
+        String id = managerProducto.getlast() + "p";//id=idproducto
+        String idrecurso = id + "r";
+        String clase = "Recurso Turístico";
+        Boolean estado = true;
+
+
         try {
             //Datos Producto
             bRecurso.setIdproducto(id);
             bRecurso.setNombre(mrequest.getParameter("name"));
             bRecurso.setClase(clase);
             bRecurso.setEstado(estado);
-            
+
             //Datos Recurso Turistico
             bRecurso.setIdrecurso(idrecurso);
             bRecurso.setCategoria(mrequest.getParameter("category"));
             bRecurso.setTipo(mrequest.getParameter("type"));
             bRecurso.setDescripcion(mrequest.getParameter("description"));
             bRecurso.setCorredor(mrequest.getParameter("corredor"));
-           
-            
+
+
             // Geometry            
             //bGeometry.setId(id);
             bGeometry.setLatitud(Double.parseDouble(mrequest.getParameter("lat")));
             bGeometry.setLongitud(Double.parseDouble(mrequest.getParameter("lon")));
             bGeometry.setIdproducto(id);
-            
+
             //Detalle
             bDetalle.setDistancia(mrequest.getParameter("traveling_distance"));
             bDetalle.setCosto_ingreso(mrequest.getParameter("entry_cost"));
@@ -111,11 +111,11 @@ public class SRegistrarRecurso extends HttpServlet {
 
             //imagen
             String url_img = "";
-            ArrayList<BImagen> listImagenes = new ArrayList<BImagen>();        
-            
+            ArrayList<BImagen> listImagenes = new ArrayList<BImagen>();
+
             for (int i = 1; i <= files.size(); i++) {
                 bImagen = new BImagen();
-                
+
                 String archivo = ((UploadFile) mrequest.getFiles().get("file" + i)).getFileName();
                 int posicionPunto = archivo.indexOf(".");
                 String nombreImagen = archivo.substring(0, posicionPunto);
@@ -129,27 +129,26 @@ public class SRegistrarRecurso extends HttpServlet {
                 bImagen.setTitulo(mrequest.getParameter("title_img" + i));
                 bImagen.setDescripcion(mrequest.getParameter("description_img" + i));
                 bImagen.setIdproducto(id);
-                
+
                 ((UploadFile) mrequest.getFiles().get("file" + i)).setFileName(nombreImagen);
                 UploadFile file = (UploadFile) files.get("file" + i);
                 upBean.store(mrequest, "file" + i);
-                
+
 
                 //System.out.println(" file names" + i + " " + file.getFileName());
-                
+
                 //lista de imagenes
                 listImagenes.add(bImagen);
 
             }
 
             //System.out.println("list.toString(); "+ list.toString());         
-            System.out.println("features " + bRecurso.features());            
+            System.out.println("features " + bRecurso.features());
             bRecurso.setGeometry(bGeometry);
             bRecurso.setImagenes(listImagenes);
-            
+
             managerrecurso.registrarrecurso(bRecurso);
-            
-            //System.out.println("termino ");
+            sesion.setAttribute("conf", "conf");
             response.sendRedirect("admin/registrar.jsp");
         } catch (Exception ex) {
             request.setAttribute("message", "There was an error: " + ex.getMessage());

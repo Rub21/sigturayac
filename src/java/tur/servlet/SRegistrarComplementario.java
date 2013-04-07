@@ -125,16 +125,9 @@ public class SRegistrarComplementario extends HttpServlet {
             }
 
             bComplementario.setImagenes(listImagenes);
-
-
-
             managerComplementario.registrartransporte(bComplementario);
-            //System.out.println("termino ");
-            // sesion.setAttribute("confirmacion", "<script>alert('Se Registro Correctamente el Complementario de Restaurant')</script>");
+            sesion.setAttribute("conf", "conf");
             response.sendRedirect("admin/registrar.jsp");
-            //sesion.setAttribute("confirmacion", "");
-
-
         } catch (Exception ex) {
             request.setAttribute("message", "There was an error: " + ex.getMessage());
             System.out.println("Error" + ex.getMessage());

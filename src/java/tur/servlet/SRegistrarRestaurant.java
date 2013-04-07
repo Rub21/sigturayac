@@ -32,10 +32,10 @@ import tur.manager.ManagerRestaurant;
  * @author ruben
  */
 public class SRegistrarRestaurant extends HttpServlet {
-    
+
     ManagerProducto managerProducto = null;
     ManagerRestaurant managerRestaurant = null;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, UploadException {
         response.setContentType("text/html;charset=UTF-8");
@@ -51,24 +51,24 @@ public class SRegistrarRestaurant extends HttpServlet {
         //manager adn bean
         managerProducto = new ManagerProducto(conexion_producto);
         managerRestaurant = new ManagerRestaurant(conexion);
-        
-        
-        
+
+
+
         BRestaurant bRestaurant = new BRestaurant();
         BImagen bImagen;// = new BImagen();
         BGeometry bGeometry = new BGeometry();
-        
-        
+
+
         UploadBean upBean;
         //clases for upload images
         upBean = new UploadBean();
         String direccion = request.getSession().getServletContext().getRealPath("imagenesDB/");
         upBean.setFolderstore(direccion);
-        
+
         MultipartFormDataRequest mrequest = new MultipartFormDataRequest(request);
-        
+
         mrequest.DEFAULTENCODING = "ISO-8859-1";
-        
+
         java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat("yyMMddHHmmss");//fecha        
         Hashtable files = mrequest.getFiles();
 
@@ -97,7 +97,7 @@ public class SRegistrarRestaurant extends HttpServlet {
             bGeometry.setLatitud(Double.parseDouble(mrequest.getParameter("lat")));
             bGeometry.setLongitud(Double.parseDouble(mrequest.getParameter("lon")));
             bGeometry.setIdproducto(idproducto);
-            
+
             bRestaurant.setGeometry(bGeometry);
             //Imagen    
             ArrayList<BImagen> listImagenes = new ArrayList<BImagen>();
@@ -116,24 +116,20 @@ public class SRegistrarRestaurant extends HttpServlet {
                 bImagen.setTitulo(mrequest.getParameter("title_img" + i));
                 bImagen.setDescripcion(mrequest.getParameter("description_img" + i));
                 bImagen.setIdproducto(idproducto);
-                
+
                 ((UploadFile) mrequest.getFiles().get("file" + i)).setFileName(nombreImagen);
                 UploadFile file = (UploadFile) files.get("file" + i);
                 upBean.store(mrequest, "file" + i);
                 //lista de imagenes
                 listImagenes.add(bImagen);
-                
+
             }
-            
+
             bRestaurant.setImagenes(listImagenes);
-            
+
             managerRestaurant.registrarrestaurant(bRestaurant);
-            //System.out.println("termino ");
-          // sesion.setAttribute("confirmacion", "<script>alert('Se Registro Correctamente el Servicio de Restaurant')</script>");
-           response.sendRedirect("admin/registrar.jsp");
-           //sesion.setAttribute("confirmacion", "");
-              
-            
+            sesion.setAttribute("conf", "conf");
+            response.sendRedirect("admin/registrar.jsp");
         } catch (Exception ex) {
             request.setAttribute("message", "There was an error: " + ex.getMessage());
             System.out.println("Error" + ex.getMessage());
