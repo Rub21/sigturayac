@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE>
+<%
+/*
+   String usuario = (String) session.getAttribute("user");
+   if(usuario==null)
+   {
+       response.sendRedirect("login.jsp");
+   }
+*/
+%>
 <html>
     <head>
         <title>Registrar Recursos Turistico</title>
@@ -45,7 +54,10 @@
                             </ul>
 
                             <div class="pull-right">
-                                Usuarios:Ruben21
+                                Bienvenido : ${user}
+                                
+                                <p><a href="${pageContext.request.contextPath}/SCerrarsesion">Cerrar Sesion</a></p>
+                                
                             </div>
                         </div><!-- /.nav-collapse -->
                     </div>
@@ -65,7 +77,7 @@
 
         </div>
 
-        ${confirmacion}       
+              
         <div id='backdrop'></div>
         <div class="total-container" id='recurso'>
             <%@ include file="recurso.jspf" %>

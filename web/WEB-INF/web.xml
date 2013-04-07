@@ -64,6 +64,14 @@
         <servlet-name>SListarComplementario</servlet-name>
         <servlet-class>tur.servlet.SListarComplementario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SLogin</servlet-name>
+        <servlet-class>tur.servlet.SLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SCerrarsesion</servlet-name>
+        <servlet-class>tur.servlet.SCerrarsesion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SRegistrarRecurso</servlet-name>
         <url-pattern>/SRegistrarRecurso</url-pattern>
@@ -107,6 +115,14 @@
     <servlet-mapping>
         <servlet-name>SListarComplementario</servlet-name>
         <url-pattern>/SListarComplementario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SLogin</servlet-name>
+        <url-pattern>/SLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SCerrarsesion</servlet-name>
+        <url-pattern>/SCerrarsesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
