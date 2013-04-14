@@ -14,8 +14,6 @@ function mm_recurso(callback) {
         error: response
     });
 
-
-
     function response(x) {
         //var features = [],
         latfield = '',
@@ -39,11 +37,7 @@ function mm_recurso(callback) {
             features_data.push(x[i]); //global variable
 
         }
-
-
-
-       // console.log('primero pasa por aqui' + features_data);
-        //return callback;
+        console.log(features_data);
         return callback(features_data);
     }
 }

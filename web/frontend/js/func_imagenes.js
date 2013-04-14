@@ -14,7 +14,6 @@ function grid_images(f) {
             '</li>';
     }
     $('.thumbnails').append(o);
-
 };
 
 function carrucel_images(aray, id_parent, size) {

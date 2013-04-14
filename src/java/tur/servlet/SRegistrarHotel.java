@@ -112,9 +112,9 @@ public class SRegistrarHotel extends HttpServlet {
             //Servicios Adicional
             ArrayList<BServiciosAdicional> listser = new ArrayList<BServiciosAdicional>();
             int num_servicios = Integer.parseInt(mrequest.getParameter("num-services"));
-            System.out.println("num_services= " + num_servicios);
+            //System.out.println("num_services= " + num_servicios);
             for (int i = 1; i <= num_servicios; i++) {
-                System.out.println("=====================Servicio adicional i= " + i);
+                //System.out.println("=====================Servicio adicional i= " + i);
                 BServiciosAdicional bServiciosAdicional = new BServiciosAdicional();
                 bServiciosAdicional.setTipo(mrequest.getParameter("type-service" + i));
                 bServiciosAdicional.setDescripcion(mrequest.getParameter("description-service" + i));
@@ -163,20 +163,13 @@ public class SRegistrarHotel extends HttpServlet {
 
             }
 
-            //System.out.println("list.toString(); "+ list.toString());         
-            //System.out.println("features " + bHotel.features());            
             bHotel.setbGeometry(bGeometry);
             bHotel.setImagenes(listImagenes);
 
-            managerHotel.registrarHotel(bHotel);               
+            managerHotel.registrarHotel(bHotel);
             sesion.setAttribute("conf", "conf");
             response.sendRedirect("admin/registrar.jsp");
-            
-            
-            
-            
-            
-            
+
         } catch (Exception ex) {
             request.setAttribute("message", "There was an error: " + ex.getMessage());
             System.out.println("Error" + ex.getMessage());

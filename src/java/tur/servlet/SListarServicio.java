@@ -15,32 +15,72 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import tur.datasource.BDConnecion;
+import tur.manager.ManagerComplementario;
 import tur.manager.ManagerHotel;
+import tur.manager.ManagerRecurso;
+import tur.manager.ManagerRestaurant;
+import tur.manager.ManagerTransporte;
 
 /**
  *
  * @author ruben
  */
-public class SListarHotel extends HttpServlet {
+public class SListarServicio extends HttpServlet {
 
- ManagerHotel managerHotel=null;
- 
+    ManagerHotel managerHotel = null;   
+    ManagerRestaurant managerRestaurant = null;
+    ManagerTransporte managerTransporte = null;
+    ManagerComplementario managerComplementario = null;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-     
-         ServletContext ctx = this.getServletConfig().getServletContext();
-        BDConnecion conexion = new BDConnecion(ctx);
-        managerHotel = new ManagerHotel(conexion);
-        List list = new LinkedList();
+
+        ServletContext ctx = this.getServletConfig().getServletContext();
+        BDConnecion conexion_recurso = new BDConnecion(ctx);
+        BDConnecion conexion_hotel = new BDConnecion(ctx);
+        BDConnecion conexion_restaurant = new BDConnecion(ctx);
+        BDConnecion conexion_transporte = new BDConnecion(ctx);
+        BDConnecion conexion_complementario = new BDConnecion(ctx);
+
+ 
+        managerHotel = new ManagerHotel(conexion_hotel);
+        managerRestaurant = new ManagerRestaurant(conexion_restaurant);
+        managerTransporte = new ManagerTransporte(conexion_transporte);
+        managerComplementario = new ManagerComplementario(conexion_complementario);
+
+        List list_producto = new LinkedList();
+        List list_hotel = new LinkedList();
+        List list_restaurant = new LinkedList();
+        List list_transporte = new LinkedList();
+        List list_complementario = new LinkedList();
         try {
-            list = managerHotel.listarhotel();            
-            String json = new Gson().toJson(list);
+
+            list_hotel = managerHotel.listarhotel();
+            for (int i = 0; i < list_hotel.size(); i++) {
+                list_producto.add(list_hotel.get(i));
+            }
+
+            list_restaurant = managerRestaurant.listarrestaurant();
+            for (int i = 0; i < list_restaurant.size(); i++) {
+                list_producto.add(list_restaurant.get(i));
+            }
+            
+            list_transporte = managerTransporte.listarTransporte();
+            for (int i = 0; i < list_transporte.size(); i++) {
+                list_producto.add(list_transporte.get(i));
+            }
+             list_complementario = managerComplementario.listarcomplementario();
+            for (int i = 0; i < list_complementario.size(); i++) {
+                list_producto.add(list_complementario.get(i));
+            }
+
+            String json = new Gson().toJson(list_producto);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write("callback("+json+")");
-            
+            response.getWriter().write("callback(" + json + ")");
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

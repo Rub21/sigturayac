@@ -72,6 +72,18 @@
         <servlet-name>SCerrarsesion</servlet-name>
         <servlet-class>tur.servlet.SCerrarsesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SListarProducto</servlet-name>
+        <servlet-class>tur.servlet.SListarProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SListar</servlet-name>
+        <servlet-class>tur.servlet.SListar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SListarServicio</servlet-name>
+        <servlet-class>tur.servlet.SListarServicio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SRegistrarRecurso</servlet-name>
         <url-pattern>/SRegistrarRecurso</url-pattern>
@@ -123,6 +135,18 @@
     <servlet-mapping>
         <servlet-name>SCerrarsesion</servlet-name>
         <url-pattern>/SCerrarsesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListarProducto</servlet-name>
+        <url-pattern>/SListarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListar</servlet-name>
+        <url-pattern>/SListar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListarServicio</servlet-name>
+        <url-pattern>/SListarServicio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

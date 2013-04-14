@@ -133,7 +133,7 @@ public class DAOTransporte {
             pstmt.close();
             rs.close();
         } catch (SQLException ex) {
-            System.out.println("Error en Listar Recurso: " + ex);
+            System.out.println("Error en Listar Transporte: " + ex);
         }
         return list;
     }

@@ -104,3 +104,25 @@ a .ancla{
   background-size: 938px 318px;  // original dimensions * 2
   background-position: -624px -48px;  // original position * 2
 }
+
+
+
+/*-----------------------------------
+Select Layers from services in map recursos
+-------------------------------------*/
+.container-servicios{
+  position: relative;
+}
+
+
+.container-servicios ul.dropdown-menu{
+    display: block;    
+}/*980102055*/
+
+.select_servicios{
+  position: absolute;
+  top:50px;
+  right:170px;
+  z-index: 999;
+  display:block;
+}

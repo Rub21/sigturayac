@@ -2888,7 +2888,9 @@ table th[class*="span"],
 .icon-transporte {
     background: url("../img/transporte.png") no-repeat ;
 }
-
+.icon-transporte-black {
+    background: url("../img/transporte-b.png") no-repeat ;
+}
 .icon-comprar {
     background: url("../img/comprar.png") no-repeat ;
 }
@@ -2897,6 +2899,7 @@ table th[class*="span"],
 .icon-corredor {
     background: url("../img/corredor.png") no-repeat ;
 }
+
 /******************************/
 
 .dropup,

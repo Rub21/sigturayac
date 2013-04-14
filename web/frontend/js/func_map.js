@@ -1,9 +1,15 @@
 function draw_map(id_div, rec) {
-    console.log(rec);
+    // console.log(rec);
     var map_id = 'examples.map-dg7cqh4z',
         features = [],
         interaction,
-        map = mapbox.map(id_div);
+        map = mapbox.map(id_div, null, null, [
+        easey_handlers.DoubleClickHandler(),
+        easey_handlers.DragHandler(),
+        easey_handlers.TouchHandler()]);
+
+
+
     map.addLayer(mapbox.layer().id(map_id));
     map.centerzoom({
         lat: rec.geometry.latitud,
@@ -13,7 +19,31 @@ function draw_map(id_div, rec) {
     map.setZoomRange(0, 18);
 
 
-    mm_hotel2(mapServicioAdicional);
+    //Seleccion de Servicios Complementarios
+    for (var i = 0; i < features_data.length; i++) {
+
+        var clase = features_data[i].clase.replace(/\s/g, "");
+
+        if (clase === 'Hotel') {
+
+            features.push(features_data[i]);
+
+        } else if (clase === 'Restaurant') {
+
+            features.push(features_data[i]);
+
+        } else if (clase === 'Transporte') {
+
+            features.push(features_data[i]);
+
+        } else if (clase === 'Complementario') {
+
+            features.push(features_data[i]);
+        }
+
+    };
+
+    mapServicioAdicional(features);
 
     function mapServicioAdicional(f) {
         features = f;
@@ -48,20 +78,70 @@ function draw_map(id_div, rec) {
 
             return o + a_button;
         });
+    };
 
-        //$('#map').removeClass('loading');
 
-        function newMarker() {
-            if (window.location.hash == '#new') {
-                $('#new').fadeIn('slow');
-                window.location.hash = '';
-                window.setTimeout(function() {
-                    $('#new').fadeOut('slow');
-                }, 4000)
+    /*****************************************
+initializer events
+******************************************/
+
+    $('a[href="#hotel"]').click(function(e) {
+        e.preventDefault();
+        scroll_to = document.getElementById('servicios');        
+        scroll_to.scrollIntoView();
+        markerLayer.filter(function(features) {
+            var clase = features.clase.replace(/\s/g, "");
+            if (clase === 'Hotel') {
+                return true;
             }
-        }
+        });
+
+        $('#select_hotel').addClass('active');
+    });
+
+    $('a[href="#restaurant"]').click(function(e) {
+        e.preventDefault();
+        scroll_to = document.getElementById('servicios');
+        scroll_to.scrollIntoView();
+        markerLayer.filter(function(features) {
+            var clase = features.clase.replace(/\s/g, "");
+            if (clase === 'Restaurant') {
+                return true;
+            }
+        });
+    });
+
+    $('a[href="#transporte"]').click(function(e) {
+        e.preventDefault();
+        scroll_to = document.getElementById('servicios');
+        scroll_to.scrollIntoView();
+        markerLayer.filter(function(features) {
+            var clase = features.clase.replace(/\s/g, "");
+            if (clase === 'Transporte') {
+                return true;
+            }
+        });
+    });
+
+    $('a[href="#complementario"]').click(function(e) {
+        e.preventDefault();
+        scroll_to = document.getElementById('servicios');
+        scroll_to.scrollIntoView();
+        markerLayer.filter(function(features) {
+            var clase = features.clase.replace(/\s/g, "");
+            if (clase === 'Complementario') {
+                return true;
+            }
+        });
+    });
+
+    $('a[href="#todos"]').click(function(e) {
+        e.preventDefault();
+        markerLayer.filter(function(features) {
+            return true;
+        });
+    });
 
 
-    }
 
 };

@@ -80,11 +80,11 @@ Map
 position:relative; 
 }
 
-#maps{
+#map_servicios{
 position:relative;
 /*z-index: 45;*/
 width:100%;
-height:500px;
+height:550px;
 }
 
 

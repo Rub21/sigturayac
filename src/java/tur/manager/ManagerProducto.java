@@ -5,6 +5,7 @@
 package tur.manager;
 
 import java.sql.Connection;
+import java.util.List;
 import tur.bean.BProducto;
 import tur.dao.DAOProducto;
 import tur.datasource.BDConnecion;
@@ -15,7 +16,7 @@ import tur.datasource.BDConnecion;
  */
 public class ManagerProducto {
 
-    DAOProducto dAOProducto; 
+    DAOProducto dAOProducto;
     BProducto bProducto;
     Connection cn = null;
 
@@ -24,12 +25,12 @@ public class ManagerProducto {
     }
 
     public int getlast() {
-        dAOProducto= new DAOProducto(cn);  
+        dAOProducto = new DAOProducto(cn);
         return dAOProducto.getlast();
     }
 
- 
-    
-   
-
+    public List listarproducto() {
+        dAOProducto = new DAOProducto(cn);
+        return dAOProducto.listarproducto();
+    }
 }

@@ -5,36 +5,34 @@ var map_id = 'examples.map-4l7djmvo',
 var recursos_search = [];
 map.addLayer(mapbox.layer().id(map_id));
 
-/*window.setTimeout(function() {
- mm_recurso(mm_hotel(mapData));//call the all funtions
- }, 4000);
- */
-mm_hotel(mm_recurso(mapData)); //call the all funtions
+var reduce = 0;
 
+mm_producto(mapData);
 map.centerzoom({
     lat: -13.16048,
     lon: -74.22565
 }, 15);
+
 map.setZoomRange(0, 18);
 
 function mapData(f) {
+    //console.log(f);
+    features_data=f;//for all APP
     features = f;
-
-    //console.log(features);
-
     markerLayer = mapbox.markers.layer().features(features);
     markerLayer.factory(function(m) {
         //var elem = mapbox.markers.simplestyle_factory(m);
         var elem = simplestyle_factory_rub(m);
+
         MM.addEvent(elem, 'click', function(e) {
             map.ease.location({
-                lat: m.geometry.coordinates[1],
+                lat: m.geometry.coordinates[1] + reduce,
                 lon: m.geometry.coordinates[0]
+
             }).zoom(map.zoom()).optimal();
         });
         return elem;
     });
-
 
     interaction = mapbox.markers.interaction(markerLayer);
     map.addLayer(markerLayer);
@@ -50,24 +48,27 @@ function mapData(f) {
             '</div>';
         var a_button = '';
         var a = feature.clase.replace(/\s/g, "");
-
         if (a == 'RecursoTurístico') {
             a_button = '<a  role="button" class="btn"  href="#detail" onclick="call_detaill_recurso(\'' + feature.idproducto + '\')"> Más Detalle</a>';
-
         } else if (a == 'Hotel') {
             a_button = '<a  role="button" class="btn"  href="#detail" onclick="call_detail_hotel(\'' + feature.idproducto + '\')"> Más Detalle</a>';
-
         }
         return o + a_button;
     });
+
+    /*
+    markerLayer.filter(function(features) {
+        if (features.clase.replace(/\s/g, "")=== 'RecursoTurístico'){    
+            return true;
+        }
+    });
+*/
     $('#map').removeClass('loading');
-
-
     fill_search(features);
     grid_images(features);
 }
 
-
+/*
 function newMarker() {
     if (window.location.hash == '#new') {
         $('#new').fadeIn('slow');
@@ -76,7 +77,9 @@ function newMarker() {
             $('#new').fadeOut('slow');
         }, 4000)
     }
-}
+}*/
+
+
 
 function fill_search(f) {
     _.each(f, function(value, key) {
@@ -96,31 +99,21 @@ function buscarproducto(id) {
 
         if (features[key].idproducto == id) {
             producto = features[key];
-
         }
     });
     return producto;
-
 };
 
 
 simplestyle_factory_rub = function(feature) {
-
     var sizes = {
         small: [30, 50],
         medium: [30, 70],
         large: [35, 90]
     };
-
     var fp = feature.properties || {};
-
     var size = fp['marker-size'] || 'medium';
-    //var symbol = (fp['marker-symbol']) ? '-' + fp['marker-symbol'] : '';
     var symbol = fp['marker-symbol'];
-    //console.log(symbol);
-    //var color = fp['marker-color'] || '7e7e7e';
-    // color = color.replace('#', '');
-
     var d = document.createElement('img');
     d.width = sizes[size][0];
     d.height = sizes[size][1];
@@ -136,13 +129,50 @@ simplestyle_factory_rub = function(feature) {
     ds.pointerEvents = 'all';
     return d;
 };
-
-
-
 var bandera = false;
-
-
 $(document).on('ready', function() {
+
+    /*-----------------------------------
+     Zoomer Map for centering marker
+     -------------------------------------*/
+    map.addCallback("zoomed", function(map, zoomOffset) {
+        if (map.zoom() == 18) {
+            reduce = 0.001;
+        } else if (map.zoom() == 17) {
+            reduce = 0.002;
+        } else if (map.zoom() == 16) {
+            reduce = 0.003;
+        } else if (map.zoom() == 15) {
+            reduce = 0.005;
+        } else if (map.zoom() == 14) {
+            reduce = 0.011;
+        } else if (map.zoom() == 13) {
+            reduce = 0.018;
+        } else if (map.zoom() == 12) {
+            reduce = 0.036;
+        } else if (map.zoom() == 11) {
+            reduce = 0.1;
+        } else if (map.zoom() == 10) {
+            reduce = 0.2;
+        } else if (map.zoom() == 9) {
+            reduce = 0.4;
+        } else if (map.zoom() == 8) {
+            reduce = 0.5;
+        } else if (map.zoom() == 7) {
+            reduce = 0.9;
+        } else if (map.zoom() == 6) {
+            reduce = 1.5;
+        } else if (map.zoom() == 5) {
+            reduce = 3;
+        } else if (map.zoom() == 4) {
+            reduce = 7;
+        } else if (map.zoom() == 3) {
+            reduce = 20;
+        } else if (map.zoom() == 2) {
+            reduce = 30;
+        }
+    });
+
 
     $('#btn-full-with').click(function(e) {
         $('#full-width').css({
@@ -154,10 +184,9 @@ $(document).on('ready', function() {
             }
         });
     });
-
-
-
-    //alert('tttttttt');
+    /*-----------------------------------
+     PLay Recurso
+     -------------------------------------*/
     $('#play_s').click(function(e) {
 
         bandera = true;

@@ -1,5 +1,5 @@
 function call_detaill_recurso(id) {
-  
+
     var rec = buscarproducto(id); //rec=recurso
     var o = '<div id="popover_recurso">' +
         '<div class="content well">' +
@@ -11,18 +11,26 @@ function call_detaill_recurso(id) {
         '</a>' +
         '<ul class="nav pull-right" >' +
         '<li>' +
-        '<a href="#servicios" onclick="call_map(\'' + rec.idproducto + '\')"><i class="icon-comer-black"></i>Donde Comer' +
+        '<a href="#hotel" ><i class="icon-dormir-black"></i>Donde Dormir' +
         '</a>' +
         '</li>' +
         '<li>' +
-        '<a href="#servicios" onclick="call_map(\'' + rec.idproducto + '\')"><i class="icon-dormir-black"></i>Donde Dormir' +
+        '<a href="#restaurant"><i class="icon-comer-black"></i>Donde Comer' +
         '</a>' +
         '</li>' +
         '<li>' +
-        '<a href="#"> Otros'+ 
+        '<a href="#transporte" ><i class="icon-transporte-black"></i>Como viajar' +
         '</a>' +
         '</li>' +
-      
+        '<li>' +
+        '<a href="#complementario" ><i class="icon-dormir-black"></i>Otros Servicios' +
+        '</a>' +
+        '</li>' +
+        '<li>' +
+        '<a href="#"> Otros' +
+        '</a>' +
+        '</li>' +
+
         '</ul>' +
         '</div>' +
         '</div>' +
@@ -41,15 +49,44 @@ function call_detaill_recurso(id) {
         '</div>';
 
     var close_button = '<div class="modal-footer"><button type="button" data-dismiss="modal" class="btn btn-primary" id="butoon_close">Close</button></div>';
-    var div_map = '<a name="servicios"><h3>Donde comer</h3></a><div name="servicios" class="map_recurso"></div>';
+
+    var div_map = '<div class="container-servicios">' +
+        '<a id="servicios" >' +
+        '<h3  class="text-info text-center" >Servicios Adicionales en : ' + rec.nombre + '</h3>' +
+        '</a>' +
+        '<div class="map_servicios"></div>' +
+        '<div class="select_servicios">' +
+        '<ul class="dropdown-menu">' +
+        '<li><a id="select_hotel" href="#hotel"><i class="icon-hand-right"></i>Donde Dormir</a></li>' +
+        '<li><a id="select_restaurant"href="#restaurant"><i class="icon-hand-right"></i>Donde Comer</a></li>' +
+        '<li><a id="select_transporte" href="#transporte"><i class="icon-hand-right"></i>Como Viajar</a></li>' +
+        '<li><a id="select_complementario" href="#complementario"><i class="icon-hand-right"></i>Otros Servicios</a></li>' +
+        '<li class="divider"></li>' +
+        '<li><a id="select_todos" href="#todos"><i class="icon-hand-right"></i>Todos</a></li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>'; //finish content
+
+
+
     var up_pages = '<a href="#up" class="ancla"></a>';
+
     o = o + div_map + close_button + up_pages;
+
     $('#detail').append(o);
-    carrucel_images(rec.imagenes, 'carrucel', 575);
-    add_detalles_recurso('id_detalles_recurso', rec);
+    // call_map_servicios(rec.idproducto);
     $('#backdrop').fadeIn(200);
     $('#detail').show(200);
     $('#close').show(200);
+
+    carrucel_images(rec.imagenes, 'carrucel', 575);
+    add_detalles_recurso('id_detalles_recurso', rec);
+    window.setTimeout(function() {
+        call_map_servicios(rec.idproducto);
+        $('.dropdown-toggle').dropdown();
+
+    }, 1000);
+
 };
 
 
@@ -105,9 +142,11 @@ function check_null(k) {
     }
 }
 
-function call_map(id) {
-    $('.map_recurso').empty();
+
+function call_map_servicios(id) {
+    $('.map_servicios').empty();
     var rec = buscarproducto(id); //rec=recurso
-    $('.map_recurso').append('<div id="maps"></div>');
-    draw_map('maps', rec);
+    console.log(rec);
+    $('.map_servicios').append('<div id="map_servicios"></div>');
+    draw_map('map_servicios', rec); //id map, parametro para reconocer el hotel, y el objeto recurso
 };

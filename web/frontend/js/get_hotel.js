@@ -1,7 +1,7 @@
 //features_data=global data
 //dir= global data
-
-function mm_hotel(callback) {
+/*
+function mm_hotel() {
     if (typeof reqwest === 'undefined') {
         throw 'CSV: reqwest required for mm_recurso';
     }
@@ -15,9 +15,7 @@ function mm_hotel(callback) {
     });
 
     function response(x) {
-        // var features = [],
-
-        //console.log(x);
+        var features = [];
         for (var i = 0; i < x.length; i++) {
             //some fixing
             _.each(x[i].imagenes, function(value, key) {
@@ -31,15 +29,16 @@ function mm_hotel(callback) {
             //features.push(x[i]);
             features_data.push(x[i]); //global variable
         }
-        //console.log('Segundo por aqui' + features_data);
-        //return callback(features_data);
-        return callback;
+        console.log(features_data);
+        return features;
     }
 };
+*/
+
 
 function mm_hotel2(callback) {
     if (typeof reqwest === 'undefined') {
-        throw 'CSV: reqwest required for mm_recurso';
+        throw 'CSV: reqwest required for mm_hotel';
     }
     var url = 'http://localhost:8080/sigturayac/SListarHotel?callback=callback';
     reqwest({
@@ -51,9 +50,7 @@ function mm_hotel2(callback) {
     });
 
     function response(x) {
-        var features = [],
-            latfield = '',
-            lonfield = '';
+        var features = [];
 
         for (var i = 0; i < x.length; i++) {
             //some fixing
@@ -70,3 +67,4 @@ function mm_hotel2(callback) {
         return callback(features);
     }
 };
+

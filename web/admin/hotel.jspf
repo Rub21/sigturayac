@@ -112,8 +112,13 @@
                 <h4>Imagenes del Recurso</h4>
                 <div class='well file_upload' id='f1-h'>
                     <input name='file1' type='file' id='file_img1-h'/>
-                    <input type='text' name='title_img1' value=''  id='title_img1-h' placeholder='Nombre de Imagen Principal' />
-                    <textarea class="span7" name='description_img1' rows='2' cols='75'  id='description_img1-h'placeholder='Descripcion de la imagen Principal'></textarea>
+                    <input type='text' name='title_img1' value=''  id='title_img1-h' placeholder='Nombre de Imagen 1' />
+                    <textarea class="span7" name='description_img1' rows='2' cols='75'  id='description_img1-h'placeholder='Descripcion de la imagen 1'></textarea>
+                </div>
+                  <div class='well file_upload' id='f2-h'>
+                    <input name='file2' type='file' id='file_img2-h'/>
+                    <input type='text' name='title_img2' value=''  id='title_img2-h' placeholder='Nombre de Imagen 2' />
+                    <textarea class="span7" name='description_img2' rows='2' cols='75'  id='description_img2-h'placeholder='Descripcion de la imagen 2'></textarea>
                 </div>
                 <div id='file_tools-h'>
                     <img src='img/file_add.png' id='add_file-h' title='Add new input'/>
