@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>TURAYACUCHO</title>
+    <link type='text/css' href='frontend/css/mapbox.css' rel='stylesheet' />
+    <link  type='text/css' href='frontend/css/style.css' rel='stylesheet' />
+    <link  type='text/css' href='frontend/css/style_popover.css' rel='stylesheet' />
+    <link href="frontend/css/bootstrap.css" rel="stylesheet" media="screen"></head>
+<body>
+    <div id='masthead'>
+        <div id='header'>
+            <h2>TURAYACUCHO</h2>
+            <h3>Conoce Ayacucho...</h3>
+        </div>
+        <div class="menu-container">
+            <div class="navbar  navbar-inverse">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <div class="nav-collapse">
+                            <ul class="nav">
+                                <li class="active">
+                                    <a href="#"> <i class="icon-home icon-white"></i>
+                                        Inicio
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-ok icon-white"></i>
+                                        Donde ir <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu select_recurso">
+                                        <li>
+                                            <a href="#">Sitios Arqueológicos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Arquitectura Colonial</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Sitios Historicos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Cultura Viva</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Paisaje Natural</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#">Todos</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a  href="#"  class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-dormir"></i>
+                                        Donde Dormir <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu select_hotel">
+                                        <li>
+                                            <a href="#">Sin Categoria</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1 Estrella</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2 Estrellas</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">3 Estrellas</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">4 Estrellas</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#">Todos</a>
+                                        </li>
+                                    </ul>
+
+                                </li>
+                                <li>
+                                    <a id='play' href="#">
+                                        <i class="icon-comer"></i>
+                                        Donde Comer
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-transporte"></i>
+                                        Como Viajar
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-comprar"></i>
+                                        Donde Comparar
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">Otros</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#"  class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-corredor"></i>
+                                        Corredores Turisticos
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu select_corredor">
+                                        <li>
+                                            <a   href="#">Corredor Wari-Chanka-Inca</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Corredor Nazca-Chanka-Inca</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Corredor Paracas-Huaytará-Ayacucho</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Ruta Puquio-Cora Cora-Sara Sara</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Ruta Huancapi-Carapo-Huancasancos</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <form class="navbar-search pull-right">
+                                <!-- Search-->
+                                <input type="text" id="search" name="search" class="search-query span3 " placeholder="Buscar"/>
+                                <!-- close-->
+                                <div class="icon-search"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- block map -->
+    <div id="map" class="loading"></div>
+    <!-- block midle content  -->
+    <!--<div align="center" id="middle_content">
+    <div class="container">
+        <ul class="thumbnails"></ul>
+    </div>
+</div>
+-->
+<a href="#" id="play_s" class="play_stop" >
+    <i class="icon-play"></i>
+</a>
+<a href="#" id="stop_s" class="play_stop" >
+    <i class="icon-pause"></i>
+</a>
+
+<!-- Modal over boostarp-->
+<div id="full-width" class="modal container hide fade" tabindex="-1">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Recurso Turisticos</h3>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <ul class="thumbnails"></ul>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+
+    </div>
+</div>
+
+<!-- block for superposition  -->
+<div id='backdrop'></div>
+<!--<div id='backdrop_overdetail'></div>
+-->
+<!-- block footer  -->
+<div id="footer">
+<div class="center">
+    <a href="#full-width" id="btn-full-with" role="button" class="btn" data-toggle="modal">Recursos Turisticos</a>
+    <div class="separator">--</div>
+    <span>
+        Desarrollado con
+        <a href='http://tilemill.com' title='TileMill'>TileMill</a>
+    </span>
+    <a href="http://mapbox.com/" target='_blank'>
+        <img src="images/mapbox.png"></a>
+</div>
+</div>
+<div id='detail' class='sig_popover'></div>
+
+<!--<div id='sub_detail' class='popover_overdetail'></div>
+-->
+<a id='close' href='#close'>✕</a>
+<!-- <a id='close_overdetail' href='#close'>✕</a>
+-->
+<!-- scripts-->
+<script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
+<script src="frontend/lib/jquery.min.js"></script>
+<script src="frontend/lib/underscore-min.js"></script>
+<!--js search-->
+<script src="frontend/lib/jquery.better-autocomplete.js"></script>
+<!-- end search-->
+
+<!--js grid images-->
+<script src="frontend/lib/bootstrap.js"></script>
+<!-- end grid images-->
+
+<script src="frontend/js/global.js"></script>
+<script src="frontend/js/func_imagenes.js"></script>
+<script src="frontend/js/func_recurso.js"></script>
+<script src="frontend/js/func_hotel.js"></script>
+<script src="frontend/js/func_map.js"></script>
+
+<script src="frontend/js/get_recurso.js"></script>
+<script src="frontend/js/get_hotel.js"></script>
+<script src="frontend/js/get_restaurant.js"></script>
+<script src="frontend/js/get_producto.js"></script>
+
+<script src="frontend/js/app.js"></script>
+<script src="frontend/js/app_recurso.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+
+<form name="form" id="form-r" method="post"  action="<%=request.getContextPath()%>/SRegistrarRecurso" enctype="multipart/form-data" >
+    <div class="container">
+        <div class="row">                  
+            <div class="well span8" align="center">
+                <h4> Generalidades del Recursos Turístico</h4>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span4">Nombre del Recurso  </div>
+                        <div class="span8">
+                            <input type='text'  name='name' value=''  align="left" id='name-r' placeholder="" required="Campo Requerido"/>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Categoria</div>
+                        <div class="span8">
+                            <select name='category' id='category-r' align="left" >
+                                <option value='Sitios Arqueológicos'>Sitios Arqueológicos</option>
+                                <option value='Arquitectura Colonial'>Arquitectura Colonial</option>
+                                <option value='Sitios Historicos'>Sitios Historicos</option>
+                                <option value='Cultura Viva'>Cultura Viva</option>
+                                <option value='Paisaje Natural'>Paisaje Natural</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Tipo</div>
+                        <div class="span8">
+                            <select name='type' id='type-r'  align="left">
+                                <option value='Conjunto Arqueológico'>Conjunto Arqueológico</option>
+                                <option value='Sitio Arqueológico'>Sitio Arqueológico</option>
+                                <option value='Camino'>Camino</option>
+                                <option value='Andenes'>Andenes</option>
+                                <option value='Sistema de Riego'>Sistema de Riego</option>      
+                            </select>
+                        </div>                             
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Descripción</div>
+                        <div class="span8">
+                            <textarea  name='description'  rows='8' cols='75' id='description-r' align="left"></textarea>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Corredor o Ruta Turística al que Pertenece el Recurso Turístico</div>
+                        <div class="span8">
+                            <select name='corredor' id='corredor-r'required  align="left">
+                                <option value='Ninguno'>Ninguno</option>
+                                <option value='Corredor Wari-Chanka-Inca'>Corredor Wari-Chanka-Inca</option>
+                                <option value='Corredor Nazca-Chanka-Inca'>Corredor Nazca-Chanka-Inca</option>
+                                <option value='Corredor Paracas-Huaytará-Ayacucho'>Corredor Paracas-Huaytará-Ayacucho</option>
+                                <option value='Ruta Puquio-Cora Cora-Sara Sara'>Ruta Puquio-Cora Cora-Sara Sara</option>
+                                <option value='Ruta Huancapi-Carapo-Huancasancos'>Ruta Huancapi-Carapo-Huancasancos</option>      
+                            </select>
+                        </div> 
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+    <div class="container">                         
+        <div class="row">                       
+            <div class="well span8" align="center">
+                <h4>Detalles de Recurso</h4>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span4">Distancia </div>
+                        <div class="span8">
+                            <input type='text' name='traveling_distance' value='' id='traveling_distance-r' align="left" placeholder='Distancia en Km ó m de recorrido al Recurso Túristico' />
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Costo de ingreso</div>
+                        <div class="span8">
+                            <input type='text' name='entry_cost' value='' id='entry_cost-r' align="left" placeholder='Costo de entrada en soles al Recurso Túristico' />
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Horario de Atención</div>
+                        <div class="span8">
+                            <input type='text' name='opening_hours' value='' id='opening_hours-r' align="left" placeholder='Horario de Atencion en el Recurso Túristico' />
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Temperatura</div>
+                        <div class="span8">
+                            <input type='text' name='temperatura' value='' id='temperatura-r' align="left" placeholder='Temperatura Maxima y Minima en el Recurso Túristico' />
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Como Llegar</div>
+                        <div class="span8">
+                            <textarea  name='how_get'  rows='8' cols='75' id='how_get-r' align="left"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                       
+    </div> 
+
+
+    <div class="container">                         
+        <div class="row">                       
+            <div class="well span8" align="center">
+                <h4>Ubicacion del Recurso</h4>
+                <div class="container-fluid">
+                    <div class="row-fluid">                            
+                        <div class="span2"><input type="checkbox" class='chek_lat_lon' id='chek_lat_lon-r' name="chek_lat_lon" value=''></div>
+                        <div class="span10"><p  align="left">Ingresar Latitud y Longitud Manualmente</p>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Latitud</div>
+                        <div class="span8">
+                            <input type='text' name='lat' value='' id='lat-r' align="left" placeholder='click en el Mapa'  required  readonly />
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span4">Longitud</div>
+                        <div class="span8">
+                            <input type='text' name='lon' value='' id='lon-r' align="left" placeholder='click en el Mapa'  required  readonly/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                       
+    </div>    
+    <div class="conmap">
+        <div class="accordion" id="accordion-r">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse-r">
+                        Mostrar Mapa
+                    </a>
+                </div>
+                <div id="collapse-r" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <div id='map-r'></div>
+                        <div class='left'>
+                            <a id='geojsonLayer-r' href='#'></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">  
+            <div class="well span8" align="center">  
+                <h4>Imagenes del Recurso</h4>
+                <div class='well file_upload' id='f1-r'>
+                    <input name='file1' type='file' id='file_img1-r'required/>
+                    <input type='text' name='title_img1' value=''  id='title_img1-r' placeholder='Nombre de Imagen 1' />
+                    <textarea class="span8" name='description_img1' rows='2' cols='75'  id='description_img1-r'placeholder='Descripcion de la imagen 1'></textarea>
+                </div>
+                  <div class='well file_upload' id='f2-r' >
+                    <input name='file2' type='file' id='file_img2-r' required/>
+                    <input type='text' name='title_img2' value=''  id='title_img2-r' placeholder='Nombre de Imagen 2' />
+                    <textarea class="span8" name='description_img2' rows='2' cols='75'  id='description_img2-r'placeholder='Descripcion de la imagen 2'></textarea>
+                </div>
+                <div id='file_tools-r'>
+                    <img src='img/file_add.png' id='add_file-r' title='Add new input'/>
+                    <img src='img/file_del.png' id='del_file-r' title='Delete'/>
+                </div>
+            </div> 
+
+        </div> 
+    </div> 
+    <!--<div class="container">                         
+        <div class="row">                       
+            <div class="well span8" align="center">
+                <h4>Corredor o Ruta Turística </h4>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span4">Corredor o Ruta Turística al que Pertenece el Recurso Turístico</div>
+                        <div class="span4">
+                            <select name='type' id='type-r'required  align="left">
+                                <option value='Ninguno'>Ninguno</option>
+                                <option value='Corredor Wari-Chanka-Inca'>Corredor Wari-Chanka-Inca</option>
+                                <option value='Corredor Nazca-Chanka-Inca'>Corredor Nazca-Chanka-Inca</option>
+                                <option value='Corredor Paracas-Huaytará-Ayacucho'>Corredor Paracas-Huaytará-Ayacucho</option>
+                                <option value='Ruta Puquio-Cora Cora-Sara Sara'>Ruta Puquio-Cora Cora-Sara Sara</option>
+                                <option value='Ruta Huancapi-Carapo-Huancasancos'>Ruta Huancapi-Carapo-Huancasancos</option>      
+                            </select>
+                        </div>                             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  -->                     
+
+
+    <button type="submit" class="btn btn-primary" id="button">  Registrar</button>
+    <button type="reset" class="btn">Limpiar</button>
+    <a class="btn" id="clear-r" href="#close">Cancelar</a>
+
+</form>
