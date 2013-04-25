@@ -9,8 +9,9 @@ package twitter.bean;
  * @author ruben
  */
 public class BTwitter {
+
+    String id;//real id not in media    
     String created_at;
-    int id;//real id not in media		
     String media_url; //img 		
     String url;// url from twiter
     String from_user;
@@ -21,20 +22,20 @@ public class BTwitter {
     String text;
     BGeometry geometry;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getCreated_at() {
         return created_at;
     }
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getMedia_url() {
@@ -108,6 +109,4 @@ public class BTwitter {
     public void setGeometry(BGeometry geometry) {
         this.geometry = geometry;
     }
-    
-    
 }

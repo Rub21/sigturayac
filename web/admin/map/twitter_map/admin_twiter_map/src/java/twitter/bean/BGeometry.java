@@ -10,15 +10,10 @@ package twitter.bean;
  */
 public class BGeometry {
 
-    /*geo: {
-     coordinates: [-13.16728063, -74.22774986],
-     type: "Point"
-     },  */
     private String type = "Point";
     private double[] coordinates = new double[2];
     private double latitud;
     private double longitud;
-    private String idproducto;
 
     public String getType() {
         return type;
@@ -51,28 +46,6 @@ public class BGeometry {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
-
-    public String getIdproducto() {
-        return idproducto;
-    }
-
-    public void setIdproducto(String idproducto) {
-        this.idproducto = idproducto;
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 }

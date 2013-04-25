@@ -6,7 +6,7 @@
     </context-param>
     <context-param>
         <param-name>url</param-name>
-        <param-value>jdbc:postgresql://localhost:5432/dbprodtur</param-value>
+        <param-value>jdbc:postgresql://localhost:5432/db_desechos4</param-value>
     </context-param>
     <context-param>
         <param-name>username</param-name>
