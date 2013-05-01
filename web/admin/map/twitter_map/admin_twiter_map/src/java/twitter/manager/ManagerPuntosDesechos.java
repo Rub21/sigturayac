@@ -33,4 +33,9 @@ public class ManagerPuntosDesechos {
         return dAOPuntoDesecho.registrar(b);
         
     }
+
+    public List listarpuntospendientes() {
+        dAOPuntoDesecho = new DAOPuntoDesecho(cn);
+        return dAOPuntoDesecho.listarpuntospendientes();
+    }
 }

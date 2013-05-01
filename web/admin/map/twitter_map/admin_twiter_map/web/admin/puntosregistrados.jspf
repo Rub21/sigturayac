@@ -1,0 +1,10 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+
+<form name="form" id="form-r" method="post"  action="<%=request.getContextPath()%>/SRegistrarRecurso" enctype="multipart/form-data" >
+
+<div id='map'>            
+</div>
+
+</form>

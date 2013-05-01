@@ -4,52 +4,46 @@
  */
 package twitter.servlet;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import twitter.datasource.BDConnecion;
-import twitter.manager.ManagerLogin;
+import twitter.manager.ManagerPuntosDesechos;
 
 /**
  *
  * @author ruben
  */
-public class SLogin extends HttpServlet {
+public class SListarPuntosPendientes extends HttpServlet {
 
-    ManagerLogin managerLogin = null;
+    ManagerPuntosDesechos managerPuntosDesechos = null;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
         ServletContext ctx = this.getServletConfig().getServletContext();
-
-        HttpSession sesion = request.getSession();
-
         BDConnecion conexion = new BDConnecion(ctx);
-        managerLogin = new ManagerLogin(conexion);
+        managerPuntosDesechos = new ManagerPuntosDesechos(conexion);
+
+
+        List list = new LinkedList();
+
         try {
-
-            String usuario = request.getParameter("user");
-            String password = request.getParameter("password");
-
-            boolean bandera = managerLogin.autenticar(usuario, password);
-
-            System.out.println("----" + bandera);
-            if (bandera) {
-                sesion.setAttribute("user", usuario);
-                response.sendRedirect("admin/registrar.jsp");
-            } else {
-                sesion.setAttribute("try", "Usuario  y Password Incorectos, vuelva a intentar");
-                response.sendRedirect("admin/login.jsp");
-            }
-
-
+            list = managerPuntosDesechos.listarpuntospendientes();
+            System.out.println("---------" + list.toString());
+            String json = new Gson().toJson(list);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("callback(" + json + ")");
         } finally {
             out.close();
         }

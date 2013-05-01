@@ -52,7 +52,7 @@ public class DAOPuntoDesecho {
 
     public String registrar(BPuntoDesecho bPuntoDesecho) {
 
-        String resultado= null;
+        String resultado = null;
         try {
 
             String sql = "select insert_punto("
@@ -73,10 +73,50 @@ public class DAOPuntoDesecho {
             //pstmt.executeUpdate();
             pstmt.executeQuery();
             conn.commit();
-            resultado ="Registro Exitoso";
+            resultado = "Registro Exitoso";
         } catch (SQLException ex) {
             Logger.getLogger(DAOPuntoDesecho.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return  resultado;
+        return resultado;
+    }
+
+    public List listarpuntospendientes() {
+
+
+        List list = new LinkedList();
+        try {
+            String sql = "select idpunto, usuario, nombre, fecha, hora, url_img, perfil_img, descripcion, tipo, estado ,fecharegistro,lat, lon from select_punto where estado=true;";
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+
+                BPuntoDesecho bPuntoDesecho = new BPuntoDesecho();
+
+                bPuntoDesecho.setIdpunto(rs.getString("idpunto"));
+                bPuntoDesecho.setUsuario(rs.getString("usuario"));
+                bPuntoDesecho.setNombre(rs.getString("nombre"));
+                bPuntoDesecho.setFecha(rs.getString("fecha"));
+                bPuntoDesecho.setHora(rs.getString("hora"));
+                bPuntoDesecho.setUrl_img(rs.getString("url_img"));
+                bPuntoDesecho.setPerfil_img(rs.getString("perfil_img"));
+                bPuntoDesecho.setDescripcion(rs.getString("descripcion"));
+                bPuntoDesecho.setTipo(rs.getString("tipo"));
+                bPuntoDesecho.setEstado(rs.getBoolean("estado"));
+
+
+                BGeometry bGeometry = new BGeometry();
+                bGeometry.setLatitud(rs.getDouble("lat"));
+                bGeometry.setLongitud(rs.getDouble("lon"));
+                bGeometry.setCoordinates();
+               bPuntoDesecho.setGeometry(bGeometry);
+                list.add(bPuntoDesecho);
+            }
+            pstmt.close();
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error : " + ex);
+        }
+        return list;
     }
 }
+

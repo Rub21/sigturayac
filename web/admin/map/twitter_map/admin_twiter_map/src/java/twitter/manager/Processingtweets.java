@@ -24,12 +24,12 @@ public class Processingtweets extends TimerTask {
         BDConnecion conexion = new BDConnecion();
         managerPuntosDesechos = new ManagerPuntosDesechos(conexion);
         List<BPuntoDesecho> list = new LinkedList<BPuntoDesecho>();
-        list = managerPuntosDesechos.getids_twitter();
+        list = managerPuntosDesechos.getids_twitter();//from datat base
 
-        System.out.println(list.size());
-        Tweets tweets = new Tweets();
+        System.out.println("size in data base : "+ list.size());
+        Tweets tweets = new Tweets();//cals fro get data twitter
         list = tweets.get_tweets(list);
-        System.out.println(list);
+        System.out.println("Lista de twettes que se registraron : "+list.size());
         for (int i = 0; i < list.size(); i++) {
             String resultado = managerPuntosDesechos.registrar((BPuntoDesecho) list.get(i));
             System.out.println(list.get(i));

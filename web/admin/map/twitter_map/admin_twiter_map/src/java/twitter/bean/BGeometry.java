@@ -27,8 +27,10 @@ public class BGeometry {
         return coordinates;
     }
 
-    public void setCoordinates(double[] coordinates) {
-        this.coordinates = coordinates;
+    public void setCoordinates() {
+        this.coordinates[0]=getLongitud();
+        this.coordinates[1]=getLatitud();
+
     }
 
     public double getLatitud() {

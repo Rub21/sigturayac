@@ -6,7 +6,7 @@
     </context-param>
     <context-param>
         <param-name>url</param-name>
-        <param-value>jdbc:postgresql://localhost:5432/db_desechos4</param-value>
+        <param-value>jdbc:postgresql://localhost:5432/db_desechos</param-value>
     </context-param>
     <context-param>
         <param-name>username</param-name>
@@ -88,6 +88,14 @@
         <servlet-name>SGetTwitter</servlet-name>
         <servlet-class>twitter.servlet.SGetTwitter</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SListarPuntosPendiente</servlet-name>
+        <servlet-class>twitter.servlet.SListarPuntos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SListarPuntosPendientes</servlet-name>
+        <servlet-class>twitter.servlet.SListarPuntosPendientes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SRegistrarRecurso</servlet-name>
         <url-pattern>/SRegistrarRecurso</url-pattern>
@@ -155,6 +163,14 @@
     <servlet-mapping>
         <servlet-name>SGetTwitter</servlet-name>
         <url-pattern>/SGetTwitter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListarPuntosPendiente</servlet-name>
+        <url-pattern>/SListarPuntos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SListarPuntosPendientes</servlet-name>
+        <url-pattern>/SListarPuntosPendientes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -102,11 +102,11 @@ a {
 }
 
 
-#map,#map-r, #map-h, #map-re, #map-t, #map-c{  /*maps for recurso , hotel, REstaurant*/  
+#map{  
     background:#f3f3f3;
-    width:560px;
+    width:90%;
     border:1px solid #808080;
-    height:480px;
+    height:600px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
@@ -127,11 +127,11 @@ a {
 ---------------------------------------------*/
 
 .total-container{  
-    width: 623px;
+    width: 90%;
     height: auto;  
     display: none;
     position: absolute;    
-    top:50px;  
+    top:70px;  
     left: 0;
     right: 0;
     margin-right: auto;
@@ -215,21 +215,8 @@ Customiser boostrap
     padding-bottom: 10px;
 }
 
-.conmap , .conmap_hotel, .conmap_sition{
-    display: block;
-    background: #F5F5F5;
-    height: auto;
-    width:623px; 
-    margin-bottom: 10px;
-    margin-top: -21px;
-    border-radius: 0px 0px 4px 4px;
-}
 
-.conmap  .accordion-heading .accordion-toggle,.conmap_hotel , .conmap_sition{
-    padding: 0px;
-    margin: 0px;
-    text-align: center;
-}
+
 
 
 .error{

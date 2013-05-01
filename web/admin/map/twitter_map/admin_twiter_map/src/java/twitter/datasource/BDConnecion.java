@@ -21,7 +21,7 @@ public class BDConnecion implements Serializable {
     }
     public BDConnecion() {
         this.driver = "org.postgresql.Driver";
-        this.url = "jdbc:postgresql://localhost:5432/db_desechos4";
+        this.url = "jdbc:postgresql://localhost:5432/db_desechos";
         this.username = "postgres";
         this.pwname = "1234";
     }
@@ -30,7 +30,7 @@ public class BDConnecion implements Serializable {
         try {
             Class.forName(driver).newInstance();
             Connection conn = DriverManager.getConnection(this.url, this.username, this.pwname);
-            System.out.println("Coneccion a base de datos" + conn);
+            //System.out.println("Coneccion a base de datos" + conn);
             return conn;
 
         } catch (SQLException sqle) {

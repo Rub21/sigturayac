@@ -28,8 +28,8 @@ public class Tweets {
     public List<BPuntoDesecho> get_tweets(List<BPuntoDesecho> list_in_db) { //list_in_db= listado de tweets en la base de datos
 
         List<BPuntoDesecho> list = new LinkedList<BPuntoDesecho>();
-        String jsonString = callURL("http://search.twitter.com/search.json?q=%23aquid&include_entities=1&&geocode=-13.16074,-74.22563,0.5mi");
-        //System.out.println("\n\njsonString: " + jsonString);
+        String jsonString = callURL("http://search.twitter.com/search.json?q=%23aquid&include_entities=1&&geocode=-13.16074,-74.22563,1mi");
+        System.out.println("\n\njsonString: " + jsonString);
         //quitar el primero 
         String word = "\"results\":";
         //System.out.println(jsonString.indexOf(word));
@@ -53,32 +53,35 @@ public class Tweets {
             for (int i = 0; i < jsonArray.length() - 1; i++) {   // iterate through jsonArray 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
+                BPuntoDesecho bp = new BPuntoDesecho();
+                bp.setIdpunto(jsonObject.get("id") + "t");
 
-                for (int j = 0; j < list_in_db.size(); j++) {
-                    BPuntoDesecho bp = new BPuntoDesecho();
-                    bp.setIdpunto(jsonObject.get("id") + "t");
-                    System.out.println("de Twiter "+ bp.getIdpunto());
-                    System.out.println("de DB "+list_in_db.get(j).getIdpunto());
-                    if ((list_in_db.get(j).getIdpunto()+"").equals(bp.getIdpunto()+"")) {
-                        BPuntoDesecho bPuntoDesecho = new BPuntoDesecho();
-                        bPuntoDesecho.setIdpunto(jsonObject.get("id") + "t");
-                        bPuntoDesecho.setDescripcion(jsonObject.get("text") + "");
-                        bPuntoDesecho.setFecha(jsonObject.get("created_at") + "");
-                        bPuntoDesecho.setUrl_img(get_media_url(jsonObject + ""));
-                        bPuntoDesecho.setUsuario(jsonObject.get("from_user") + "");
-                        bPuntoDesecho.setNombre(jsonObject.get("from_user_id") + "");
-                        //bPuntoDesecho.setFrom_user_name((String) jsonObject.get("from_user_name"));
-                        bPuntoDesecho.setPerfil_img((String) jsonObject.get("profile_image_url"));
+                boolean bandera = false;//suponemos que el twwet no pertenece a la lista de la base de datos.
 
-                        bPuntoDesecho.setEstado(true);
-                        bPuntoDesecho.setTipo("t");
-
-                        bPuntoDesecho.setGeometry(get_geo(jsonObject + ""));
-                        //System.out.println(bPuntoDesecho.getIdpunto());
-                        list.add(bPuntoDesecho);
+                for (int j = 0; j < list_in_db.size(); j++) {//for para verificar si el twett pertenece a la base de datos o no
+                    System.out.println("de Twiter " + bp.getIdpunto());
+                    System.out.println("de DB " + list_in_db.get(j).getIdpunto());
+                    
+                    if ((list_in_db.get(j).getIdpunto() + "").equals(bp.getIdpunto() + "")) {
+                        bandera = true;// tweet perteence a la base de datos
                     }
-
-                    System.out.println("Verifica  " +(list_in_db.get(j).getIdpunto()+"").equals(bp.getIdpunto()+""));
+                    
+                }
+                if (!bandera) {//haora ya verifica si perteence o no  pra el registro en la base de datos
+                    BPuntoDesecho bPuntoDesecho = new BPuntoDesecho();
+                    bPuntoDesecho.setIdpunto(jsonObject.get("id") + "t");
+                    bPuntoDesecho.setDescripcion(jsonObject.get("text") + "");
+                    bPuntoDesecho.setFecha(jsonObject.get("created_at") + "");
+                    bPuntoDesecho.setUrl_img(get_media_url(jsonObject + ""));
+                    bPuntoDesecho.setUsuario(jsonObject.get("from_user") + "");
+                    bPuntoDesecho.setNombre(jsonObject.get("from_user_id") + "");
+                    //bPuntoDesecho.setFrom_user_name((String) jsonObject.get("from_user_name"));
+                    bPuntoDesecho.setPerfil_img((String) jsonObject.get("profile_image_url"));
+                    bPuntoDesecho.setEstado(true);
+                    bPuntoDesecho.setTipo("t");
+                    bPuntoDesecho.setGeometry(get_geo(jsonObject + ""));
+                    //System.out.println(bPuntoDesecho.getIdpunto());
+                    list.add(bPuntoDesecho);
                 }
 
 
@@ -90,38 +93,24 @@ public class Tweets {
             e.printStackTrace();
         }
 
-        // System.out.println(list.size());
+        System.out.println(list.size());
 
         return list;
     }
 
     public static String get_media_url(String json) {
-        /*{"text":"#aquid alameda http://t.co/vowx23eMSp","from_user_id":713303390,"from_user_name":"EDITH YESENIA Q.P.",
-         "geo":{"type":"Point","coordinates":[-13.16728063,-74.22774986]},
-         "profile_image_url_https":"https://si0.twimg.com/profile_images/2426796802/8hevn3ed4dpqx6l8pkh0_normal.jpeg",
-         "iso_language_code":"es","entities":{"urls":[],"hashtags":[{"text":"aquid","indices":[0,6]}],
-         "media":[{"sizes":{"orig":{"w":2560,"resize":"fit","h":1920},"small":{"w":340,"resize":"fit","h":255},
-         "thumb":{"w":150,"resize":"crop","h":150},"large":{"w":1024,"resize":"fit","h":768},"medium":{"w":600,"resize":"fit","h":450}},
-         "id":324935334209126401,"media_url_https":"https://pbs.twimg.com/media/BIJm9wKCAAEXy5F.jpg",
-         "media_url":"http://pbs.twimg.com/media/BIJm9wKCAAEXy5F.jpg","expanded_url":
-         "http://twitter.com/ediqp8/status/324935334204932096/photo/1",
-         "indices":[15,37],"id_str":"324935334209126401","type":"photo","display_url":
-         "pic.twitter.com/vowx23eMSp","url":"http://t.co/vowx23eMSp"}],"user_mentions":[]},
-         "id":324935334204932096,"source":"&lt;a href=&quot;http://twitter.com/download/android&quot;&gt;Twitter for Android&lt;/a&gt;","from_user_id_str":"713303390",
-         "from_user":"ediqp8","created_at":"Thu, 18 Apr 2013 17:19:55 +0000","id_str":"324935334204932096","profile_image_url":
-         * "http://a0.twimg.com/profile_images/2426796802/8hevn3ed4dpqx6l8pkh0_normal.jpeg","metadata":{"result_type":"recent"}}*/
 
         String first_word = "http://pbs.twimg.com/";
-        //System.out.println(jsonString.indexOf(word));
+
         int first_position = json.lastIndexOf(first_word);
-        //System.out.println(first_position);
+        System.out.println(first_position);
         json = json.substring(first_position);
         //System.out.println("-------" + json);
         String second_word = "\",\"expanded_url\":";
         int second_position = json.lastIndexOf(second_word);
         //System.out.println(second_position);
         json = json.substring(0, second_position);
-        //System.out.println(json);
+        System.out.println(json);
         return json;
     }
 

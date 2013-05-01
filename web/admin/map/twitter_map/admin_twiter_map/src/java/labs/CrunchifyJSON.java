@@ -147,7 +147,7 @@ public class CrunchifyJSON {
             lon = lon.substring(1);
             double[] conIsrdinates = {Double.parseDouble(lat), Double.parseDouble(lon)};
 
-            bGeometry.setCoordinates(conIsrdinates);
+            //bGeometry.setCoordinates(conIsrdinates);
 
 
         }
