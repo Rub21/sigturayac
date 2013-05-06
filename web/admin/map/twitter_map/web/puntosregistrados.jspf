@@ -1,0 +1,23 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+
+
+<div class="content_menu">
+
+    <h5>Registro por dia</h5>
+    <div class="accordion" id="accordion_moth">            
+    </div>
+
+</div>
+
+<div id="map_pen">
+
+</div>
+
+
+<!--<form name="form" id="form" method="post"  action="<%=request.getContextPath()%>/SRegistrarRecurso">  -->
+
+
+
+<!--</form>-->

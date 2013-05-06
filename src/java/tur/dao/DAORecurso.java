@@ -78,6 +78,7 @@ public class DAORecurso {
             //pstmt.executeUpdate();
             pstmt.executeQuery();
             //conn.commit();
+            pstmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(DAORecurso.class.getName()).log(Level.SEVERE, null, ex);
         }
